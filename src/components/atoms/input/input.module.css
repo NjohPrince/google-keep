@@ -1,0 +1,30 @@
+.input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  font-size: 1.6rem;
+  background: var(--white-color);
+  border: none;
+  outline: none;
+  border: 1px solid var(--border-color);
+  transition: 0.2s ease-in-out;
+  -webkit-transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -ms-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+  color: var(--dark-color);
+}
+
+.input.has__icon {
+  padding-left: 48px;
+}
+
+.input:focus,
+.input:focus-within {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}

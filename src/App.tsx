@@ -1,12 +1,10 @@
-import React from 'react'
-
-import AccessAlarmsOutlinedIcon from '@mui/icons-material/AccessAlarmsOutlined'
+import NavbarOrganisms from './components/organisms/navbar/Navbar.organisms'
 
 const App = () => {
   return (
-    <div>
+    <div className='app'>
+      <NavbarOrganisms />
       <h1>Hello World</h1>
-      <AccessAlarmsOutlinedIcon />
     </div>
   )
 }

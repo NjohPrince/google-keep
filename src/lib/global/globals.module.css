@@ -1,0 +1,140 @@
+.flex {
+  display: flex;
+  display: -ms-flexbox;
+}
+
+.center-items {
+  align-items: center;
+  justify-content: center;
+}
+
+.a-center {
+  align-items: center;
+}
+
+.j-center {
+  justify-content: center;
+}
+
+.s-b {
+  justify-content: space-between;
+}
+
+.flex-column {
+  flex-direction: column;
+  -ms-flex-direction: column;
+}
+
+.row-reverse {
+  flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.v-height {
+  min-height: 100vh;
+}
+
+.delay {
+  transition: 0.2s ease-in-out;
+  -webkit-transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -ms-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+}
+
+.grid {
+  display: grid;
+  display: -ms-grid;
+}
+
+.gap-4 {
+  gap: 4px;
+}
+
+.gap-8 {
+  gap: 8px;
+}
+
+.gap-12 {
+  gap: 12px;
+}
+
+.p-desktop {
+  padding: 64px;
+}
+
+.p-y-12 {
+  padding: 12px 0;
+}
+
+.gap-16 {
+  gap: 16px;
+}
+
+.p-y-16 {
+  padding: 16px 0;
+}
+
+.gap-24 {
+  gap: 24px;
+}
+
+.p-y-8 {
+  padding: 8px 0;
+}
+
+.p-y-24 {
+  padding: 24px 0;
+}
+
+.gap-32 {
+  gap: 32px;
+}
+
+.p-y-32 {
+  padding: 0 32px;
+}
+
+.gap-48 {
+  gap: 48px;
+}
+
+.p-y-48 {
+  padding: 48px 0;
+}
+
+.gap-64 {
+  gap: 64px;
+}
+
+.p-y-64 {
+  padding: 64px 0;
+}
+
+.m-b-s {
+  margin-bottom: 8px;
+}
+
+.m-b-m {
+  margin-bottom: 16px;
+}
+
+.m-b-l {
+  margin-bottom: 24px;
+}
+
+.m-t-s {
+  margin-top: 8px;
+}
+
+.m-t-m {
+  margin-top: 16px;
+}
+
+.m-t-l {
+  margin-top: 24px;
+}

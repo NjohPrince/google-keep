@@ -1,0 +1,22 @@
+.search__input {
+  position: relative;
+  max-width: 700px;
+  width: 100%;
+}
+
+.search__input .icon {
+  position: absolute;
+  left: 16px;
+  top: 54%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+}
+
+.search__input .icon svg {
+  width: 22px;
+  height: 22px;
+  fill: var(--gray-color);
+}

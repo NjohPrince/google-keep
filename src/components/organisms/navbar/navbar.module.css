@@ -1,0 +1,41 @@
+.navbar {
+  padding: 5px 24px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.logo svg {
+  width: 30px;
+  height: calc(119px - 66px);
+}
+
+.icon svg:nth-child(1),
+.icons__group svg {
+  fill: var(--gray-color);
+}
+
+.logo h2 {
+  font-size: 2.2rem;
+  color: var(--gray-color);
+  font-weight: 500;
+}
+
+.icon__element {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  -webkit-transition: background-color 0.2s ease-in-out;
+  -moz-transition: background-color 0.2s ease-in-out;
+  -ms-transition: background-color 0.2s ease-in-out;
+  -o-transition: background-color 0.2s ease-in-out;
+}
+
+.icon__element:hover {
+  background-color: var(--light-gray-color);
+}

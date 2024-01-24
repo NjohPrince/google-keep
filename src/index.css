@@ -1,0 +1,106 @@
+@import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+*,
+*::before,
+*::after {
+  font-family: "Figtree", sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-display: swap;
+}
+
+:root {
+  --red-color: #d30b0b;
+  --orange-color: orange;
+  --green-color: #0ab78d;
+
+  --white-color: #ffffff;
+  --dark-color: #000509;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 62.5%;
+}
+
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+img,
+figure,
+video table {
+  width: 100%;
+}
+
+input {
+  background-color: var(--white-color);
+  outline: unset;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 0px 1000px var(--white-color) inset;
+  -webkit-box-shadow: 0 0 0px 1000px var(--white-color) inset;
+  overflow: hidden;
+}
+
+input.dark:-webkit-autofill,
+input.dark:-webkit-autofill:hover,
+input.dark:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--white-color);
+  box-shadow: 0 0 0px 1000px var(--dark-color) inset;
+  -webkit-box-shadow: 0 0 0px 1000px var(--dark-color) inset;
+  overflow: hidden;
+  outline: none;
+}
+
+input:focus {
+  outline: unset;
+}
+
+input[type="checkbox"] {
+  opacity: 0;
+}
+
+@media screen and (max-width: 1540px) {
+}
+
+@media screen and (max-width: 1233px) {
+}
+
+@media screen and (max-width: 1024px) {
+}
+
+@media screen and (max-width: 848px) {
+}
+
+@media screen and (max-width: 580px) {
+}
+
+@media screen and (max-width: 380px) {
+}

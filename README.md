@@ -73,3 +73,7 @@ Atomic Design is a methodology for creating design systems that emphasizes the m
    - Consider version control for design elements to track changes systematically.
 
 By adhering to the Atomic Design principles, development teams can create scalable and maintainable design systems that promote consistency and efficiency throughout the UI development process.
+
+## State Management
+
+[Refer Here](https://github.com/NjohPrince/google-keep/blob/main/STATE_MANAGEMENT.md)

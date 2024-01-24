@@ -4,7 +4,6 @@
   font-size: 1.6rem;
   color: var(--gray-color);
   text-decoration: none;
-  font-weight: 500;
   background-color: var(--white-color);
   transition:
     background-color 0.2s ease-in-out,
@@ -23,6 +22,7 @@
     color 0.2s ease-in-out;
   border-top-right-radius: 55px;
   border-bottom-right-radius: 55px;
+  outline: none;
 }
 
 .actual__link svg {
@@ -38,6 +38,20 @@
 .actual__link.active {
   background-color: rgba(251, 188, 4, 0.3);
   color: var(--dark-color);
+}
+
+.actual__link span {
+  font-weight: 500;
+  transition: font-weight 0.2s ease-in-out;
+  -webkit-transition: font-weight 0.2s ease-in-out;
+  -moz-transition: font-weight 0.2s ease-in-out;
+  -ms-transition: font-weight 0.2s ease-in-out;
+  -o-transition: font-weight 0.2s ease-in-out;
+}
+
+.actual__link:focus span,
+.actual__link.active span {
+  font-weight: 600;
 }
 
 .actual__link.active svg,

@@ -29,6 +29,7 @@ const NavbarOrganisms = () => {
         >
           <div
             role='button'
+            tabIndex={0}
             className={`${styles.icon__element} ${globals.flex} ${globals['center-items']}`}
           >
             <MenuOutlinedIcon sx={{ width: '24px', height: '24px' }} />
@@ -76,28 +77,33 @@ const NavbarOrganisms = () => {
       <div className={`${globals.flex} ${globals['a-center']} ${globals['gap-24']}`}>
         <div className={`${globals.flex} ${globals['a-center']} ${styles.icons__group}`}>
           <div
+            tabIndex={0}
             role='button'
             className={`${styles.icon__element} ${globals.flex} ${globals['center-items']}`}
           >
             <RefreshOutlinedIcon sx={{ width: '25px', height: '25px' }} />
           </div>
           <div
+            tabIndex={0}
             role='button'
             className={`${styles.icon__element} ${globals.flex} ${globals['center-items']}`}
           >
             {viewType === 'List' ? (
               <ViewAgendaOutlinedIcon
                 onClick={() => setViewType('Grid')}
+                onKeyDown={() => setViewType('Grid')}
                 sx={{ width: '24px', height: '24px' }}
               />
             ) : (
               <GridViewOutlinedIcon
                 onClick={() => setViewType('List')}
+                onKeyDown={() => setViewType('List')}
                 sx={{ width: '24px', height: '24px' }}
               />
             )}
           </div>
           <div
+            tabIndex={0}
             role='button'
             className={`${styles.icon__element} ${globals.flex} ${globals['center-items']}`}
           >
@@ -110,6 +116,7 @@ const NavbarOrganisms = () => {
         >
           <div
             role='button'
+            tabIndex={0}
             className={`${styles.icon__element} ${globals.flex} ${globals['center-items']}`}
           >
             <AppsOutlinedIcon sx={{ width: '25px', height: '25px' }} />

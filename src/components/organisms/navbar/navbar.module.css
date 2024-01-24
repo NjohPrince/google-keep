@@ -10,6 +10,18 @@
 
 .logo {
   text-decoration: none;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border: 1px solid transparent;
+}
+
+.logo:focus,
+.logo:focus-within {
+  outline: none;
+  border: 1px solid var(--border-color);
 }
 
 .logo svg {
@@ -43,8 +55,10 @@
   -moz-transition: background-color 0.2s ease-in-out;
   -ms-transition: background-color 0.2s ease-in-out;
   -o-transition: background-color 0.2s ease-in-out;
+  outline: none;
 }
 
-.icon__element:hover {
+.icon__element:hover,
+.icon__element:focus-within {
   background-color: var(--light-gray-color);
 }

@@ -86,18 +86,17 @@ const NavbarOrganisms = () => {
           <div
             tabIndex={0}
             role='button'
+            onKeyDown={() => setViewType(viewType === 'List' ? 'Grid' : 'List')}
             className={`${styles.icon__element} ${globals.flex} ${globals['center-items']}`}
           >
             {viewType === 'List' ? (
               <ViewAgendaOutlinedIcon
                 onClick={() => setViewType('Grid')}
-                onKeyDown={() => setViewType('Grid')}
                 sx={{ width: '24px', height: '24px' }}
               />
             ) : (
               <GridViewOutlinedIcon
                 onClick={() => setViewType('List')}
-                onKeyDown={() => setViewType('List')}
                 sx={{ width: '24px', height: '24px' }}
               />
             )}

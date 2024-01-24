@@ -25,3 +25,8 @@ jest.config.js
 *.min.css
 *.d.ts
 *.map
+
+reportWebVitals.ts
+setupTests.ts
+*.json
+*.md

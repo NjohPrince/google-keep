@@ -1,0 +1,27 @@
+# Ignore build artifacts
+build/
+
+# Ignore node_modules
+node_modules/
+
+# Ignore TypeScript config files
+tsconfig.json
+tsconfig.base.json
+
+# Ignore webpack configuration
+webpack.config.js
+
+# Ignore Jest configuration
+jest.config.js
+
+# Ignore Prettier configuration
+.prettierrc.js
+
+# Ignore eslint configuration
+.eslintrc.js
+
+# Ignore any files that might be compiled or generated
+*.min.js
+*.min.css
+*.d.ts
+*.map

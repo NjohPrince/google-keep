@@ -70,7 +70,7 @@ const NavbarOrganisms = () => {
           }}
         />
       </div>
-      <div className={`${globals.flex} ${globals['a-center']} ${globals['gap-32']}`}>
+      <div className={`${globals.flex} ${globals['a-center']} ${globals['gap-24']}`}>
         <div className={`${globals.flex} ${globals['a-center']} ${styles.icons__group}`}>
           <div
             role='button'

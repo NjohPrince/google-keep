@@ -28,11 +28,5 @@ module.exports = {
     "prettier/prettier": "error",
     "@typescript-eslint/explicit-function-return-type": "off",
     "react/prop-types": "off",
-    "import/order": [
-      "error",
-      {
-        "newlines-between": "always",
-      },
-    ],
   },
 };

@@ -8,6 +8,10 @@
   background: var(--white-color);
 }
 
+.logo {
+  text-decoration: none;
+}
+
 .logo svg {
   width: 30px;
   height: calc(119px - 66px);

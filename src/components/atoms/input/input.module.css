@@ -7,7 +7,7 @@
   -ms-border-radius: 4px;
   -o-border-radius: 4px;
   font-size: 1.6rem;
-  background: var(--white-color);
+  background: var(--light-gray-color) !important;
   border: none;
   outline: none;
   border: 1px solid var(--border-color);

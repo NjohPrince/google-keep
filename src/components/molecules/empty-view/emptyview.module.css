@@ -9,4 +9,5 @@
 .empty__view h2 {
   font-size: 2.2rem;
   color: var(--gray-color);
+  text-align: center;
 }

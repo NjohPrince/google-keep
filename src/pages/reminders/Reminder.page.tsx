@@ -6,12 +6,17 @@ import EmptyViewMolecule from '../../components/molecules/empty-view/EmptyView.m
 
 const ReminderPage = () => {
   return (
-    <div className={styles.reminder}>
+    <section
+      style={{
+        position: 'relative',
+      }}
+      className={styles.reminder}
+    >
       <EmptyViewMolecule
         icon={<NotificationsOutlinedIcon sx={{ width: '128px', height: '128px' }} />}
         text='Notes with upcoming reminders appear here'
       />
-    </div>
+    </section>
   )
 }
 

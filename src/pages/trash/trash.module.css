@@ -1,0 +1,7 @@
+.trash__text {
+  font-style: italic;
+  font-size: 1.7rem;
+  color: var(--dark-color);
+  text-align: center;
+  font-weight: 500;
+}

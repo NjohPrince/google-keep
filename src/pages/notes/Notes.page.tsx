@@ -6,12 +6,17 @@ import EmptyViewMolecule from '../../components/molecules/empty-view/EmptyView.m
 
 const NotesPage = () => {
   return (
-    <div className={styles.notes}>
+    <section
+      style={{
+        position: 'relative',
+      }}
+      className={styles.notes}
+    >
       <EmptyViewMolecule
         icon={<LightbulbOutlinedIcon sx={{ width: '128px', height: '128px' }} />}
         text='Notes you add appear here'
       />
-    </div>
+    </section>
   )
 }
 

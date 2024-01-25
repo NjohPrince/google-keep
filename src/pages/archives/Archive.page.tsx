@@ -6,12 +6,17 @@ import EmptyViewMolecule from '../../components/molecules/empty-view/EmptyView.m
 
 const ArchivePage = () => {
   return (
-    <div className={`${styles.archive}`}>
+    <section
+      style={{
+        position: 'relative',
+      }}
+      className={`${styles.archive}`}
+    >
       <EmptyViewMolecule
         icon={<ArchiveOutlined sx={{ width: '128px', height: '128px' }} />}
         text='Your archived notes appear here'
       />
-    </div>
+    </section>
   )
 }
 

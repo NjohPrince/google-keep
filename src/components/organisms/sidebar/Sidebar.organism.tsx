@@ -8,36 +8,40 @@ import styles from './sidebar.module.css'
 
 import SidebarLinkMolecule from '../../molecules/sidebar-link/SidebarLink.molecule'
 import { SidebarLinkProps } from '../../molecules/sidebar-link/sidebarlink.type'
-
-export const sidebarLinks: SidebarLinkProps[] = [
-  {
-    icon: <LightbulbOutlinedIcon sx={{ width: '24px', height: '24px' }} />,
-    text: 'Notes',
-    link: '/',
-  },
-  {
-    icon: <NotificationsOutlinedIcon sx={{ width: '24px', height: '24px' }} />,
-    text: 'Reminders',
-    link: '/reminders',
-  },
-  {
-    icon: <EditOutlinedIcon sx={{ width: '24px', height: '24px' }} />,
-    text: 'Edit Labels',
-    link: '/edit-labels',
-  },
-  {
-    icon: <ArchiveOutlined sx={{ width: '24px', height: '24px' }} />,
-    text: 'Archive',
-    link: '/archive',
-  },
-  {
-    icon: <DeleteOutline sx={{ width: '24px', height: '24px' }} />,
-    text: 'Trash',
-    link: '/trash',
-  },
-]
+import { useAppSelector } from '../../../lib/hooks/redux-hooks'
 
 const SidebarOrganism = () => {
+  const notesState = useAppSelector(state => state.notesSlice)
+  const sidebarLinks: SidebarLinkProps[] = [
+    {
+      icon: <LightbulbOutlinedIcon sx={{ width: '24px', height: '24px' }} />,
+      text: 'Notes',
+      link: '/',
+      count: notesState.notes.length,
+    },
+    {
+      icon: <NotificationsOutlinedIcon sx={{ width: '24px', height: '24px' }} />,
+      text: 'Reminders',
+      link: '/reminders',
+    },
+    {
+      icon: <EditOutlinedIcon sx={{ width: '24px', height: '24px' }} />,
+      text: 'Edit Labels',
+      link: '/edit-labels',
+    },
+    {
+      icon: <ArchiveOutlined sx={{ width: '24px', height: '24px' }} />,
+      text: 'Archive',
+      link: '/archive',
+      count: notesState.archivedNotes.length,
+    },
+    {
+      icon: <DeleteOutline sx={{ width: '24px', height: '24px' }} />,
+      text: 'Trash',
+      link: '/trash',
+    },
+  ]
+
   return (
     <aside className={`${styles.sidebar} ${globals['full-width']}`}>
       <div role='navigation' className={`${globals.flex} ${globals['flex-column']}`}>
@@ -48,6 +52,7 @@ const SidebarOrganism = () => {
               icon={link.icon}
               link={link.link}
               text={link.text}
+              count={link.count}
             />
           ))}
       </div>

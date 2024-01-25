@@ -11,6 +11,21 @@
   display: block;
   height: 100%;
   background: var(--white-color);
+  transition: box-shadow 0.2s ease-in-out;
+  -webkit-transition: box-shadow 0.2s ease-in-out;
+  -moz-transition: box-shadow 0.2s ease-in-out;
+  -ms-transition: box-shadow 0.2s ease-in-out;
+  -o-transition: box-shadow 0.2s ease-in-out;
+  box-shadow: transparent 0px 8px 24px;
+  -webkit-box-shadow: tranparent 0px 8px 24px;
+  outline: none;
+}
+
+.note__card:hover,
+.note__card:focus,
+.note__card:focus-within {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  -webkit-box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .note__card svg {
@@ -23,8 +38,21 @@
   right: 8px;
 }
 
+.select {
+  position: absolute;
+  top: -14px;
+  left: -14px;
+  outline: none;
+  cursor: pointer;
+}
+
+.select svg {
+  fill: var(--dark-color);
+}
+
 .pin,
-.icons__set {
+.icons__set,
+.select {
   transition:
     visibility 0.2s ease-in-out,
     opacity 0.2s ease-in-out;
@@ -49,7 +77,10 @@
 .note__card:focus .pin,
 .note__card:hover .icons__set,
 .note__card:focus-within .icons__set,
-.note__card:focus .icons__set {
+.note__card:focus .icons__set,
+.note__card:hover .select,
+.note__card:focus-within .select,
+.note__card:focus .select {
   opacity: 1;
   visibility: visible;
 }
@@ -71,4 +102,38 @@
 .note__header p {
   font-size: 1.6rem;
   color: var(--dark-color);
+}
+
+.color__options {
+  position: relative;
+}
+
+.drop {
+  position: absolute;
+  top: 100%;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 9999;
+  transition:
+    visibility 0.2s ease-in-out,
+    opacity 0.2s ease-in-out;
+  -webkit-transition:
+    visibility 0.2s ease-in-out,
+    opacity 0.2s ease-in-out;
+  -moz-transition:
+    visibility 0.2s ease-in-out,
+    opacity 0.2s ease-in-out;
+  -ms-transition:
+    visibility 0.2s ease-in-out,
+    opacity 0.2s ease-in-out;
+  -o-transition:
+    visibility 0.2s ease-in-out,
+    opacity 0.2s ease-in-out;
+}
+
+.color__options:hover .drop,
+.color__options:focus-within .drop,
+.color__options:focus .drop {
+  visibility: visible;
+  opacity: 1;
 }

@@ -1,17 +1,17 @@
 import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternateOutlined'
 import BrushOutlinedIcon from '@mui/icons-material/BrushOutlined'
 import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined'
-import { useCallback, useRef, useState, useEffect } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 import globals from '../../../lib/global/globals.module.css'
 import styles from './managenote.module.css'
 
-import IconTooltipMolecule from '../../molecules/icon-tooltip/IconTooltip.molecule'
-import EditorMolecule from '../../molecules/editor/Editor.molecule'
-import UseOnClickOutside from '../../../lib/hooks/detect-click-outside'
 import { createNewNote } from '../../../app/features/notes/notes.slice'
+import UseOnClickOutside from '../../../lib/hooks/detect-click-outside'
+import { useAppDispatch, useAppSelector } from '../../../lib/hooks/redux-hooks'
 import { NoteType } from '../../../types/models/note.model'
-import { useAppDispatch } from '../../../lib/hooks/redux-hooks'
+import EditorMolecule from '../../molecules/editor/Editor.molecule'
+import IconTooltipMolecule from '../../molecules/icon-tooltip/IconTooltip.molecule'
 
 const initialJSON = {
   id: 0,
@@ -20,7 +20,7 @@ const initialJSON = {
   description: '',
   hasDrawing: false,
   label: '',
-  backgroundColor: '',
+  backgroundColor: 'No Color',
   checkBoxes: [],
   hasCheckBoxes: false,
   archived: false,
@@ -29,6 +29,8 @@ const initialJSON = {
 const ManageNoteOrganism = () => {
   const [editorActive, setEditorActive] = useState(false)
   const dispatch = useAppDispatch()
+  const notesState = useAppSelector(state => state.notesSlice)
+
   const [note, setNote] = useState<NoteType>({
     id: 0,
     hasImage: false,
@@ -36,7 +38,7 @@ const ManageNoteOrganism = () => {
     description: '',
     hasDrawing: false,
     label: '',
-    backgroundColor: '',
+    backgroundColor: 'No Color',
     checkBoxes: [],
     hasCheckBoxes: false,
     archived: false,
@@ -55,14 +57,31 @@ const ManageNoteOrganism = () => {
   useEffect(() => {
     if (!editorActive && JSON.stringify(note) !== JSON.stringify(initialJSON)) {
       setNote(initialJSON)
-      dispatch(createNewNote({ note }))
+      dispatch(
+        createNewNote({
+          note: {
+            ...note,
+            id:
+              notesState.notes.length === 0
+                ? 1
+                : notesState.notes[notesState.notes.length - 1].id + 1,
+          },
+        }),
+      )
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editorActive])
 
   return (
-    <div ref={ref} className={`${styles.manage__notes} ${globals['full-width']}`}>
+    <div
+      style={{
+        background:
+          note.backgroundColor === 'No Color' ? 'var(--white-color)' : note.backgroundColor,
+      }}
+      ref={ref}
+      className={`${styles.manage__notes} ${globals['full-width']}`}
+    >
       {editorActive ? (
         <EditorMolecule
           setNote={setNote}

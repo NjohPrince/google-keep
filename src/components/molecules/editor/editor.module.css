@@ -10,6 +10,7 @@
   outline: none;
   font-weight: 500;
   width: 100%;
+  background: transparent !important;
 }
 
 .editor > input {
@@ -26,11 +27,11 @@
   margin-left: -8px;
 }
 
-.bottom__actions button {
+.bottom__actions .button button {
   font-size: 1.4rem;
   font-weight: 500;
   padding: 10px 24px;
-  background-color: var(--white-color);
+  background-color: transparent;
   border-radius: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -50,4 +51,38 @@
 .bottom__actions button:focus,
 .bottom__actions button:focus-within {
   background-color: var(--light-gray-color);
+}
+
+.color__options {
+  position: relative;
+}
+
+.drop {
+  position: absolute;
+  top: 100%;
+  visibility: hidden;
+  z-index: 9999;
+  opacity: 0;
+  transition:
+    visibility 0.2s ease-in-out,
+    opacity 0.2s ease-in-out;
+  -webkit-transition:
+    visibility 0.2s ease-in-out,
+    opacity 0.2s ease-in-out;
+  -moz-transition:
+    visibility 0.2s ease-in-out,
+    opacity 0.2s ease-in-out;
+  -ms-transition:
+    visibility 0.2s ease-in-out,
+    opacity 0.2s ease-in-out;
+  -o-transition:
+    visibility 0.2s ease-in-out,
+    opacity 0.2s ease-in-out;
+}
+
+.color__options:hover .drop,
+.color__options:focus-within .drop,
+.color__options:focus .drop {
+  visibility: visible;
+  opacity: 1;
 }

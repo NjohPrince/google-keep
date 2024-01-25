@@ -1,0 +1,20 @@
+.palette {
+  padding: 10px 14px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  width: fit-content;
+  background: var(--white-color);
+}
+
+.palette button {
+  border: none;
+  outline: none;
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 50%;
+}

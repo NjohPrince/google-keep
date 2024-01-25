@@ -14,6 +14,7 @@ import styles from './editor.module.css'
 
 import IconTooltipMolecule from '../icon-tooltip/IconTooltip.molecule'
 import { EditorProps } from './editor.type'
+import ColorPalleteAtom from '../../atoms/color-pallete/ColorPallete.atom'
 
 const EditorMolecule: React.FC<EditorProps> = ({
   setEditorActive,
@@ -84,15 +85,20 @@ const EditorMolecule: React.FC<EditorProps> = ({
             tooltipPosition='center'
             icon={<PersonAddAltOutlinedIcon sx={{ width: '18px', height: '18px' }} />}
           />
-          <IconTooltipMolecule
-            tooltipProps={{
-              text: 'Background options',
-              ariaLabel: 'Background options',
-            }}
-            small
-            tooltipPosition='center'
-            icon={<ColorLensOutlinedIcon sx={{ width: '18px', height: '18px' }} />}
-          />
+          <div className={`${styles.color__options} ${globals.flex} ${globals['center-items']}`}>
+            <IconTooltipMolecule
+              tooltipProps={{
+                text: 'Background options',
+                ariaLabel: 'Background options',
+              }}
+              small
+              tooltipPosition='center'
+              icon={<ColorLensOutlinedIcon sx={{ width: '18px', height: '18px' }} />}
+            />
+            <div className={styles.drop}>
+              <ColorPalleteAtom setNote={setNote} note={note} />
+            </div>
+          </div>
           <IconTooltipMolecule
             tooltipProps={{
               text: 'Add image',

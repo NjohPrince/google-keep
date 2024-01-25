@@ -36,6 +36,20 @@ const notesSlice = createSlice({
         state.deletedNotes.splice(index, 1)
       }
     },
+    editColor: (state, action: PayloadAction<{ id: number; color: string }>) => {
+      const { id, color } = action.payload
+      const note = state.notes.find(note => note.id === id)
+
+      if (note) {
+        console.log('====================================')
+        console.log({ note, color })
+        console.log('====================================')
+        note.backgroundColor = color
+
+        const index = state.notes.indexOf(note)
+        state.notes[index] = note
+      }
+    },
     archiveOrRestoreNote: (
       state,
       action: PayloadAction<{ id: number; operation: 'restore' | 'archive' }>,
@@ -109,5 +123,6 @@ export const {
   archiveOrRestoreNote,
   deleteNote,
   softDeleteOrRestoreNote,
+  editColor,
 } = notesSlice.actions
 export default notesSlice.reducer

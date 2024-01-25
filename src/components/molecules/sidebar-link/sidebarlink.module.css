@@ -47,6 +47,20 @@
   -moz-transition: font-weight 0.2s ease-in-out;
   -ms-transition: font-weight 0.2s ease-in-out;
   -o-transition: font-weight 0.2s ease-in-out;
+  width: 100%;
+}
+
+.actual__link .count {
+  font-size: 1rem;
+  width: 15px;
+  height: 15px;
+  color: var(--white-color);
+  background: var(--main-color);
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
 }
 
 .actual__link:focus span,

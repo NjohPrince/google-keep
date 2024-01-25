@@ -6,7 +6,7 @@ import styles from './sidebarlink.module.css'
 
 import { SidebarLinkProps } from './sidebarlink.type'
 
-const SidebarLinkMolecule: React.FC<SidebarLinkProps> = ({ icon, text, link }) => {
+const SidebarLinkMolecule: React.FC<SidebarLinkProps> = ({ icon, text, link, count }) => {
   const location = useLocation()
 
   return (
@@ -17,7 +17,16 @@ const SidebarLinkMolecule: React.FC<SidebarLinkProps> = ({ icon, text, link }) =
         className={`${styles.actual__link} ${location.pathname === link ? styles['active'] : ''} ${globals.flex} ${globals['full-width']} ${globals['a-center']} ${globals['gap-32']}`}
       >
         {icon}
-        <span>{text}</span>
+        <span className={`${globals.flex} ${globals['a-center']} ${globals['gap-4']}`}>
+          {text}{' '}
+          {count !== undefined ? (
+            <span className={`${styles.count} ${globals.flex} ${globals['center-items']}`}>
+              {count}
+            </span>
+          ) : (
+            ''
+          )}
+        </span>
       </Link>
     </div>
   )

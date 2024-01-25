@@ -1,20 +1,22 @@
-import React from 'react'
-import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined'
 import AddAlertOutlinedIcon from '@mui/icons-material/AddAlertOutlined'
-import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined'
-import ColorLensOutlinedIcon from '@mui/icons-material/ColorLensOutlined'
 import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternateOutlined'
 import ArchiveOutlinedIcon from '@mui/icons-material/ArchiveOutlined'
+import CheckCircleIcon from '@mui/icons-material/CheckCircle'
+import ColorLensOutlinedIcon from '@mui/icons-material/ColorLensOutlined'
 import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined'
+import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined'
+import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined'
 import UnarchiveOutlinedIcon from '@mui/icons-material/UnarchiveOutlined'
+import React from 'react'
 
 import globals from '../../../lib/global/globals.module.css'
 import styles from './notecard.module.css'
 
-import { NoteCardProps } from './notecard.type'
-import IconTooltipMolecule from '../icon-tooltip/IconTooltip.molecule'
-import { useAppDispatch } from '../../../lib/hooks/redux-hooks'
 import { archiveOrRestoreNote } from '../../../app/features/notes/notes.slice'
+import { useAppDispatch } from '../../../lib/hooks/redux-hooks'
+import ColorPalleteAtom from '../../atoms/color-pallete/ColorPallete.atom'
+import IconTooltipMolecule from '../icon-tooltip/IconTooltip.molecule'
+import { NoteCardProps } from './notecard.type'
 
 const NoteCardMolecule: React.FC<NoteCardProps> = ({ data }) => {
   const dispatch = useAppDispatch()
@@ -23,9 +25,23 @@ const NoteCardMolecule: React.FC<NoteCardProps> = ({ data }) => {
     <div
       aria-label={data.title}
       role='button'
+      style={{
+        background: data.backgroundColor,
+      }}
       tabIndex={0}
       className={`${styles.note__card} ${globals.flex} ${globals['flex-column']} ${globals['gap-16']} ${globals['full-width']}`}
     >
+      <div className={`${styles.select}`}>
+        <IconTooltipMolecule
+          tooltipProps={{
+            text: 'Select note',
+            ariaLabel: 'Select note',
+          }}
+          small
+          tooltipPosition='center'
+          icon={<CheckCircleIcon sx={{ width: '24px', height: '24px' }} />}
+        />
+      </div>
       <div className={`${styles.pin}`}>
         <IconTooltipMolecule
           tooltipProps={{
@@ -42,6 +58,7 @@ const NoteCardMolecule: React.FC<NoteCardProps> = ({ data }) => {
       >
         <h3 className={styles.title}>{data.title}</h3>
         <p className={styles.description}>{data.description}</p>
+
         <div
           className={`${globals.flex} ${styles.icons__set} ${globals['a-center']} ${globals['gap-4']}`}
         >
@@ -67,7 +84,7 @@ const NoteCardMolecule: React.FC<NoteCardProps> = ({ data }) => {
               icon={<PersonAddAltOutlinedIcon sx={{ width: '18px', height: '18px' }} />}
             />
           </div>
-          <div>
+          <div className={`${styles.color__options} ${globals.flex} ${globals['center-items']}`}>
             <IconTooltipMolecule
               tooltipProps={{
                 text: 'Background options',
@@ -77,6 +94,9 @@ const NoteCardMolecule: React.FC<NoteCardProps> = ({ data }) => {
               tooltipPosition='center'
               icon={<ColorLensOutlinedIcon sx={{ width: '18px', height: '18px' }} />}
             />
+            <div className={styles.drop}>
+              <ColorPalleteAtom id={data.id} />
+            </div>
           </div>
           <div>
             <IconTooltipMolecule

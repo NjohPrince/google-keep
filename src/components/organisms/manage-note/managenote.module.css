@@ -17,6 +17,7 @@
 .pre__view input {
   font-size: 1.6rem;
   color: var(--dark-color);
+  background: transparent !important;
   border: none;
   outline: none;
   font-weight: 500;

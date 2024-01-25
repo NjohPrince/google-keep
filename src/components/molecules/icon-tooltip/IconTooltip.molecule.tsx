@@ -21,7 +21,7 @@ const IconTooltipMolecule: React.FC<IconTooltipProps> = ({
     >
       {icon}
       <div
-        className={`${styles.tooltip} ${tooltipPosition === 'left' ? styles.left : tooltipPosition === 'right' ? styles.right : styles.center}}`}
+        className={`${styles.tooltip} ${tooltipPosition === 'right' && styles.right} ${tooltipPosition === 'center' && styles.center} ${tooltipPosition === 'left' && styles.left}`}
       >
         <TooltipAtom {...tooltipProps} />
       </div>

@@ -33,7 +33,7 @@ const NavbarOrganisms = () => {
               text: 'Google Apps',
               ariaLabel: 'Google Apps',
             }}
-            tooltipPosition='right'
+            tooltipPosition='left'
             icon={<MenuOutlinedIcon sx={{ width: '24px', height: '24px' }} />}
           />
           <Link
@@ -135,7 +135,7 @@ const NavbarOrganisms = () => {
               text: 'Google Apps',
               ariaLabel: 'Google Apps',
             }}
-            tooltipPosition='right'
+            tooltipPosition='center'
             icon={<AppsOutlinedIcon sx={{ width: '25px', height: '25px' }} />}
           />
           <div

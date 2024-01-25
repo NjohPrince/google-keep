@@ -42,7 +42,7 @@
   visibility: visible;
 }
 
-.tooltip.center {
+.icon__element .tooltip.center {
   left: 50% !important;
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
@@ -51,10 +51,10 @@
   -o-transform: translateX(-50%);
 }
 
-.tooltip.left {
+.icon__element .tooltip.left {
   left: 0 !important;
 }
 
-.tooltip.right {
+.icon__element .tooltip.right {
   right: 0 !important;
 }

@@ -4,6 +4,7 @@ import globals from '../../../lib/global/globals.module.css'
 import styles from './notes.module.css'
 
 import EmptyViewMolecule from '../../molecules/empty-view/EmptyView.molecule'
+import ManageNoteOrganism from '../../organisms/manage-note/ManageNote.organism'
 
 const NotesTemplate = () => {
   return (
@@ -13,7 +14,11 @@ const NotesTemplate = () => {
       }}
       className={`${styles.notes} ${globals.flex} ${globals['flex-column']}`}
     >
-      <div className={`${styles.top}`}></div>
+      <div
+        className={`${styles.top} ${globals['full-width']} ${globals.flex} ${globals['center-items']}`}
+      >
+        <ManageNoteOrganism />
+      </div>
 
       <div className={`${styles.empty} ${globals.flex} ${globals['center-items']}`}>
         <EmptyViewMolecule

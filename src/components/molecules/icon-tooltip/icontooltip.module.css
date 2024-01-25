@@ -27,6 +27,11 @@
   height: 42px;
 }
 
+.icon__element.small {
+  width: 36px;
+  height: 36px;
+}
+
 .icon__element.dark:hover,
 .icon__element.dark:focus-within {
   background-color: var(--border-color);

@@ -10,7 +10,7 @@
 }
 
 .left__logo {
-  width: 280px;
+  width: calc(280px - 24px);
 }
 
 .logo {

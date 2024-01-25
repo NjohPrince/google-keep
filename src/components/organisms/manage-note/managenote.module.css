@@ -1,0 +1,28 @@
+.manage__notes {
+  max-width: 600px;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  box-shadow:
+    rgba(0, 0, 0, 0.16) 0px 3px 6px,
+    rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  -webkit-box-shadow:
+    rgba(0, 0, 0, 0.16) 0px 3px 6px,
+    rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  padding: 0 16px;
+}
+
+.pre__view input {
+  font-size: 1.6rem;
+  color: var(--dark-color);
+  border: none;
+  outline: none;
+  font-weight: 500;
+  width: 100%;
+}
+
+.pre__view svg {
+  fill: var(--gray-color);
+}

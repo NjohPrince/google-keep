@@ -1,0 +1,53 @@
+.editor {
+  padding-bottom: 6px;
+}
+
+.pre__view input,
+.editor input {
+  font-size: 1.6rem;
+  color: var(--dark-color);
+  border: none;
+  outline: none;
+  font-weight: 500;
+  width: 100%;
+}
+
+.editor > input {
+  font-size: 1.4rem;
+}
+
+.pre__view svg,
+.bottom__actions svg {
+  fill: var(--gray-color);
+}
+
+.bottom__actions {
+  margin-top: 16px;
+  margin-left: -8px;
+}
+
+.bottom__actions button {
+  font-size: 1.4rem;
+  font-weight: 500;
+  padding: 10px 24px;
+  background-color: var(--white-color);
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  outline: none;
+  border: none;
+  transition: background-color 0.2s ease-in-out;
+  -webkit-transition: background-color 0.2s ease-in-out;
+  -moz-transition: background-color 0.2s ease-in-out;
+  -ms-transition: background-color 0.2s ease-in-out;
+  -o-transition: background-color 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.bottom__actions button:hover,
+.bottom__actions button:focus,
+.bottom__actions button:focus-within {
+  background-color: var(--light-gray-color);
+}

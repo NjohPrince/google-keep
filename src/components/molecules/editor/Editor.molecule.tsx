@@ -29,7 +29,7 @@ const EditorMolecule: React.FC<EditorProps> = ({ setEditorActive, editorActive }
       className={`${styles.editor} ${globals.flex} ${globals['flex-column']} ${globals['gap-4']}`}
     >
       <div className={`${styles.pre__view} ${globals.flex} ${globals['s-b']} ${globals['gap-16']}`}>
-        <input type='text' placeholder='Title' />
+        <input aria-label='note title' type='text' placeholder='Title' />
         <div className={`${globals.flex} ${globals['a-center']} ${globals['gap-8']}`}>
           <IconTooltipMolecule
             tooltipProps={{
@@ -42,7 +42,7 @@ const EditorMolecule: React.FC<EditorProps> = ({ setEditorActive, editorActive }
         </div>
       </div>
 
-      <input ref={inputRef} type='text' placeholder='Take a note' />
+      <input ref={inputRef} aria-label='note description' type='text' placeholder='Take a note' />
 
       <div
         className={`${styles.bottom__actions} ${globals.flex} ${globals['a-center']} ${globals['gap-16']} ${globals['s-b']}`}
@@ -122,7 +122,14 @@ const EditorMolecule: React.FC<EditorProps> = ({ setEditorActive, editorActive }
           />
         </div>
         <div className={styles.button}>
-          <button onClick={() => setEditorActive(!editorActive)}>Close</button>
+          <button
+            aria-expanded={!editorActive}
+            aria-controls='collapsibleContent'
+            aria-label='Close editor'
+            onClick={() => setEditorActive(!editorActive)}
+          >
+            Close
+          </button>
         </div>
       </div>
     </div>

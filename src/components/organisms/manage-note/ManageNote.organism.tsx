@@ -29,6 +29,7 @@ const ManageNoteOrganism = () => {
         <EditorMolecule setEditorActive={setEditorActive} editorActive={editorActive} />
       ) : (
         <div
+          id='collapsibleContent'
           className={`${styles.pre__view} ${globals.flex} ${globals['s-b']} ${globals['gap-16']}`}
         >
           <input
@@ -38,6 +39,9 @@ const ManageNoteOrganism = () => {
             onKeyDown={() => {
               setEditorActive(!editorActive)
             }}
+            role='button'
+            aria-expanded={!editorActive}
+            aria-controls='collapsibleContent'
             type='text'
             placeholder='Take a note'
           />

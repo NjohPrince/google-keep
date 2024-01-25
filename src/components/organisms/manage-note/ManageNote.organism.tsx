@@ -58,7 +58,6 @@ const ManageNoteOrganism = () => {
 
   useEffect(() => {
     if (!editorActive && JSON.stringify(note) !== JSON.stringify(initialJSON)) {
-      setNote(initialJSON)
       dispatch(
         createNewNote({
           note: {
@@ -70,6 +69,8 @@ const ManageNoteOrganism = () => {
           },
         }),
       )
+
+      setNote(initialJSON)
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

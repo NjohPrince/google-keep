@@ -129,25 +129,31 @@ const NoteCardMolecule: React.FC<NoteCardProps> = ({ data }) => {
               <ColorPalleteAtom id={data.id} />
             </div>
           </div>
-          <div className={styles.upload}>
-            <IconTooltipMolecule
-              tooltipProps={{
-                text: 'Add image',
-                ariaLabel: 'Add image',
-              }}
-              small
-              tooltipPosition='center'
-              icon={<AddPhotoAlternateOutlinedIcon sx={{ width: '18px', height: '18px' }} />}
-            />
-            <input
-              onChange={handleNoteImageUpdate}
-              role='button'
-              tabIndex={0}
-              type='file'
-              title=''
-              className={styles.file__input}
-            />
-          </div>
+          <IconTooltipMolecule
+            tooltipProps={{
+              text: 'Add image',
+              ariaLabel: 'Add image',
+            }}
+            onKeyDown={() => {
+              document.getElementById('fileInput')?.click()
+            }}
+            operation={() => {
+              document.getElementById('fileInput')?.click()
+            }}
+            small
+            tooltipPosition='center'
+            icon={<AddPhotoAlternateOutlinedIcon sx={{ width: '18px', height: '18px' }} />}
+          />
+          <input
+            onChange={handleNoteImageUpdate}
+            role='button'
+            id='fileInput'
+            style={{ display: 'none' }}
+            tabIndex={0}
+            type='file'
+            title=''
+            className={styles.file__input}
+          />
           <div>
             <IconTooltipMolecule
               tooltipProps={{

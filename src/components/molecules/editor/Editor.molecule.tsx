@@ -1,20 +1,20 @@
-import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined'
-import React, { useEffect, useRef } from 'react'
 import AddAlertOutlinedIcon from '@mui/icons-material/AddAlertOutlined'
-import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined'
-import ColorLensOutlinedIcon from '@mui/icons-material/ColorLensOutlined'
 import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternateOutlined'
 import ArchiveOutlinedIcon from '@mui/icons-material/ArchiveOutlined'
-import UndoOutlinedIcon from '@mui/icons-material/UndoOutlined'
-import RedoOutlinedIcon from '@mui/icons-material/RedoOutlined'
+import ColorLensOutlinedIcon from '@mui/icons-material/ColorLensOutlined'
 import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined'
+import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined'
+import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined'
+import RedoOutlinedIcon from '@mui/icons-material/RedoOutlined'
+import UndoOutlinedIcon from '@mui/icons-material/UndoOutlined'
+import React, { useEffect, useRef } from 'react'
 
 import globals from '../../../lib/global/globals.module.css'
 import styles from './editor.module.css'
 
+import ColorPalleteAtom from '../../atoms/color-pallete/ColorPallete.atom'
 import IconTooltipMolecule from '../icon-tooltip/IconTooltip.molecule'
 import { EditorProps } from './editor.type'
-import ColorPalleteAtom from '../../atoms/color-pallete/ColorPallete.atom'
 
 const EditorMolecule: React.FC<EditorProps> = ({
   setEditorActive,
@@ -30,10 +30,38 @@ const EditorMolecule: React.FC<EditorProps> = ({
     }
   }, [])
 
+  const handleNoteImageUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const image = e.target.files?.[0]
+    if (image) {
+      const reader = new FileReader()
+
+      reader.onload = e => {
+        const imageBlob = new Blob([e.target?.result || ''], { type: image.type })
+
+        const imageUrl = URL.createObjectURL(imageBlob)
+        setNote({ ...note, image: imageUrl })
+      }
+
+      reader.readAsArrayBuffer(image)
+    }
+  }
+
   return (
     <div
       className={`${styles.editor} ${globals.flex} ${globals['flex-column']} ${globals['gap-4']}`}
     >
+      {note.image ? (
+        <div
+          style={{
+            marginTop: '16px',
+          }}
+          className={`${globals['full-width']}`}
+        >
+          <img style={{ borderRadius: '6px' }} width='100%' src={note.image} alt={note.title} />
+        </div>
+      ) : (
+        ''
+      )}
       <div className={`${styles.pre__view} ${globals.flex} ${globals['s-b']} ${globals['gap-16']}`}>
         <input
           aria-label='note title'
@@ -104,9 +132,25 @@ const EditorMolecule: React.FC<EditorProps> = ({
               text: 'Add image',
               ariaLabel: 'Add image',
             }}
+            onKeyDown={() => {
+              document.getElementById('fileInput')?.click()
+            }}
+            operation={() => {
+              document.getElementById('fileInput')?.click()
+            }}
             small
             tooltipPosition='center'
             icon={<AddPhotoAlternateOutlinedIcon sx={{ width: '18px', height: '18px' }} />}
+          />
+          <input
+            onChange={handleNoteImageUpdate}
+            role='button'
+            id='fileInput'
+            style={{ display: 'none' }}
+            tabIndex={0}
+            type='file'
+            title=''
+            className={styles.file__input}
           />
           <IconTooltipMolecule
             tooltipProps={{

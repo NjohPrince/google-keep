@@ -22,11 +22,11 @@
 }
 
 .image {
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
   width: 100%;
   height: auto;
 }
@@ -36,11 +36,11 @@
   -o-object-fit: cover;
   object-position: center;
   -o-object-position: center;
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
 }
 
 .note__card:hover,
@@ -123,25 +123,6 @@
   background: var(--white-color);
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-}
-
-.upload {
-  position: relative;
-  width: fit-content;
-  overflow: hidden;
-  overflow: -moz-hidden-unscrollable;
-  cursor: pointer;
-}
-
-.upload input {
-  position: absolute;
-  isolation: isolate;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  cursor: pointer;
 }
 
 .note__header p {

@@ -8,3 +8,7 @@
   -ms-flex: 1;
   height: 100%;
 }
+
+.top {
+  gap: 24px;
+}

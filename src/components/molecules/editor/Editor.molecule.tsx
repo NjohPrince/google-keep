@@ -1,5 +1,5 @@
 import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined'
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import AddAlertOutlinedIcon from '@mui/icons-material/AddAlertOutlined'
 import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined'
 import ColorLensOutlinedIcon from '@mui/icons-material/ColorLensOutlined'
@@ -14,9 +14,39 @@ import styles from './editor.module.css'
 
 import IconTooltipMolecule from '../icon-tooltip/IconTooltip.molecule'
 import { EditorProps } from './editor.type'
+import { NoteType } from '../../../types/models/note.model'
+import { useAppDispatch } from '../../../lib/hooks/redux-hooks'
+import { createNewNote } from '../../../app/features/notes/notes.slice'
+
+const initialJSON = {
+  id: 0,
+  hasImage: false,
+  title: '',
+  description: '',
+  hasDrawing: false,
+  label: '',
+  backgroundColor: '',
+  checkBoxes: [],
+  hasCheckBoxes: false,
+  archived: false,
+}
 
 const EditorMolecule: React.FC<EditorProps> = ({ setEditorActive, editorActive }) => {
   const inputRef = useRef<HTMLInputElement | null>(null)
+  const dispatch = useAppDispatch()
+
+  const [note, setNote] = useState<NoteType>({
+    id: 0,
+    hasImage: false,
+    title: '',
+    description: '',
+    hasDrawing: false,
+    label: '',
+    backgroundColor: '',
+    checkBoxes: [],
+    hasCheckBoxes: false,
+    archived: false,
+  })
 
   useEffect(() => {
     if (inputRef.current) {
@@ -24,12 +54,24 @@ const EditorMolecule: React.FC<EditorProps> = ({ setEditorActive, editorActive }
     }
   }, [])
 
+  useEffect(() => {
+    if (!editorActive && JSON.stringify(note) !== JSON.stringify(initialJSON)) {
+      dispatch(createNewNote({ note }))
+    }
+  }, [editorActive])
+
   return (
     <div
       className={`${styles.editor} ${globals.flex} ${globals['flex-column']} ${globals['gap-4']}`}
     >
       <div className={`${styles.pre__view} ${globals.flex} ${globals['s-b']} ${globals['gap-16']}`}>
-        <input aria-label='note title' type='text' placeholder='Title' />
+        <input
+          aria-label='note title'
+          value={note.title}
+          onChange={e => setNote({ ...note, title: e.target.value })}
+          type='text'
+          placeholder='Title'
+        />
         <div className={`${globals.flex} ${globals['a-center']} ${globals['gap-8']}`}>
           <IconTooltipMolecule
             tooltipProps={{
@@ -42,7 +84,14 @@ const EditorMolecule: React.FC<EditorProps> = ({ setEditorActive, editorActive }
         </div>
       </div>
 
-      <input ref={inputRef} aria-label='note description' type='text' placeholder='Take a note' />
+      <input
+        ref={inputRef}
+        aria-label='note description'
+        value={note.description}
+        onChange={e => setNote({ ...note, description: e.target.value })}
+        type='text'
+        placeholder='Take a note'
+      />
 
       <div
         className={`${styles.bottom__actions} ${globals.flex} ${globals['a-center']} ${globals['gap-16']} ${globals['s-b']}`}

@@ -1,4 +1,5 @@
 export type NoteType = {
+  id: number
   hasImage: boolean
   title: string
   description: string
@@ -7,4 +8,5 @@ export type NoteType = {
   backgroundColor: string
   checkBoxes: string[]
   hasCheckBoxes: boolean
+  archived: boolean
 }

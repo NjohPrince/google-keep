@@ -1,0 +1,21 @@
+.note__card {
+  padding: 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  position: relative;
+}
+
+.note__header h3 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: var(--dark-color);
+}
+
+.note__header p {
+  font-size: 1.6rem;
+  color: var(--dark-color);
+}

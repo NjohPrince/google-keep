@@ -1,7 +1,7 @@
 import { ArchiveOutlined, DeleteOutline } from '@mui/icons-material'
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined'
-import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined'
 import LightbulbOutlinedIcon from '@mui/icons-material/LightbulbOutlined'
+import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined'
 
 import globals from '../../../lib/global/globals.module.css'
 import styles from './sidebar.module.css'

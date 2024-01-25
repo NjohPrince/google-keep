@@ -1,0 +1,60 @@
+.icon__element {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  -webkit-transition: background-color 0.2s ease-in-out;
+  -moz-transition: background-color 0.2s ease-in-out;
+  -ms-transition: background-color 0.2s ease-in-out;
+  -o-transition: background-color 0.2s ease-in-out;
+  outline: none;
+  position: relative;
+}
+
+.icon__element:hover,
+.icon__element:focus-within {
+  background-color: var(--light-gray-color);
+}
+
+.tooltip {
+  position: absolute;
+  top: 100%;
+  width: fit-content;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out;
+  -webkit-transition: opacity 0.2s ease-in-out;
+  -moz-transition: opacity 0.2s ease-in-out;
+  -ms-transition: opacity 0.2s ease-in-out;
+  -o-transition: opacity 0.2s ease-in-out;
+}
+
+.icon__element:hover .tooltip,
+.icon__element:focus-within .tooltip,
+.icon__element:focus .tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+.tooltip.center {
+  left: 50% !important;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+}
+
+.tooltip.left {
+  left: 0 !important;
+}
+
+.tooltip.right {
+  right: 0 !important;
+}

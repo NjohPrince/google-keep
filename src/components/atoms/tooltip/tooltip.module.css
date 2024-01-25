@@ -1,0 +1,16 @@
+.tooltip {
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  padding: 6px 8px;
+  font-size: 1.2rem;
+  background: var(--gray-color);
+  width: fit-content;
+}
+
+.tooltip span {
+  color: var(--white-color);
+  white-space: nowrap;
+}

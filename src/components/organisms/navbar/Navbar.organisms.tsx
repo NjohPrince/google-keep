@@ -10,6 +10,7 @@ import globals from '../../../lib/global/globals.module.css'
 import styles from './navbar.module.css'
 
 import { Link } from 'react-router-dom'
+import IconTooltipMolecule from '../../molecules/icon-tooltip/IconTooltip.molecule'
 import SearchInputMolecule from '../../molecules/search-input/SearchInput.molecule'
 
 const NavbarOrganisms = () => {
@@ -27,13 +28,14 @@ const NavbarOrganisms = () => {
         <div
           className={`${styles.icon} ${globals.flex} ${globals['a-center']} ${globals['gap-24']}`}
         >
-          <div
-            role='button'
-            tabIndex={0}
-            className={`${styles.icon__element} ${globals.flex} ${globals['center-items']}`}
-          >
-            <MenuOutlinedIcon sx={{ width: '24px', height: '24px' }} />
-          </div>
+          <IconTooltipMolecule
+            tooltipProps={{
+              text: 'Google Apps',
+              ariaLabel: 'Google Apps',
+            }}
+            tooltipPosition='right'
+            icon={<MenuOutlinedIcon sx={{ width: '24px', height: '24px' }} />}
+          />
           <Link
             to='/'
             title='Keep'
@@ -76,49 +78,72 @@ const NavbarOrganisms = () => {
       </div>
       <div className={`${globals.flex} ${globals['a-center']} ${globals['gap-24']}`}>
         <div className={`${globals.flex} ${globals['a-center']} ${styles.icons__group}`}>
-          <div
-            tabIndex={0}
-            role='button'
-            className={`${styles.icon__element} ${globals.flex} ${globals['center-items']}`}
-          >
-            <RefreshOutlinedIcon sx={{ width: '25px', height: '25px' }} />
-          </div>
-          <div
-            tabIndex={0}
-            role='button'
-            onKeyDown={() => setViewType(viewType === 'List' ? 'Grid' : 'List')}
-            className={`${styles.icon__element} ${globals.flex} ${globals['center-items']}`}
-          >
-            {viewType === 'List' ? (
-              <ViewAgendaOutlinedIcon
-                onClick={() => setViewType('Grid')}
-                sx={{ width: '24px', height: '24px' }}
-              />
-            ) : (
-              <GridViewOutlinedIcon
-                onClick={() => setViewType('List')}
-                sx={{ width: '24px', height: '24px' }}
-              />
-            )}
-          </div>
-          <div
-            tabIndex={0}
-            role='button'
-            className={`${styles.icon__element} ${globals.flex} ${globals['center-items']}`}
-          >
-            <SettingsOutlinedIcon sx={{ width: '24px', height: '24px' }} />
-          </div>
+          <IconTooltipMolecule
+            tooltipProps={{
+              text: 'Refresh',
+              ariaLabel: 'Refresh',
+            }}
+            tooltipPosition='center'
+            icon={<RefreshOutlinedIcon sx={{ width: '25px', height: '25px' }} />}
+          />
+          {viewType === 'List' ? (
+            <IconTooltipMolecule
+              onKeyDown={() => setViewType('Grid')}
+              tooltipProps={{
+                text: 'List View',
+                ariaLabel: 'List View',
+              }}
+              tooltipPosition='center'
+              icon={
+                <ViewAgendaOutlinedIcon
+                  onClick={() => setViewType('Grid')}
+                  sx={{ width: '24px', height: '24px' }}
+                />
+              }
+            />
+          ) : (
+            <IconTooltipMolecule
+              onKeyDown={() => setViewType('List')}
+              tooltipProps={{
+                text: 'Grid View',
+                ariaLabel: 'Grid View',
+              }}
+              tooltipPosition='center'
+              icon={
+                <GridViewOutlinedIcon
+                  onClick={() => setViewType('List')}
+                  sx={{ width: '24px', height: '24px' }}
+                />
+              }
+            />
+          )}
+          <IconTooltipMolecule
+            tooltipProps={{
+              text: 'Settings',
+              ariaLabel: 'Settings',
+            }}
+            tooltipPosition='center'
+            icon={<SettingsOutlinedIcon sx={{ width: '24px', height: '24px' }} />}
+          />
         </div>
 
         <div
           className={`${globals.flex} ${globals['a-center']} ${styles.icons__group} ${globals['gap-24']}`}
         >
+          <IconTooltipMolecule
+            tooltipProps={{
+              text: 'Google Apps',
+              ariaLabel: 'Google Apps',
+            }}
+            tooltipPosition='right'
+            icon={<AppsOutlinedIcon sx={{ width: '25px', height: '25px' }} />}
+          />
           <div
             role='button'
             tabIndex={0}
-            className={`${styles.icon__element} ${globals.flex} ${globals['center-items']}`}
+            className={`${styles.profile} ${globals.flex} ${globals['center-items']}`}
           >
-            <AppsOutlinedIcon sx={{ width: '25px', height: '25px' }} />
+            <img src='/images/me.webp' alt='The ArtisticProgrammer' />
           </div>
         </div>
       </div>

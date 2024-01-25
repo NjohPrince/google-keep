@@ -23,20 +23,27 @@ const NotesTemplate = () => {
       >
         <ManageNoteOrganism />
 
-        <div className={`${styles.grid} ${globals['full-width']}`}>
-          {notesState.notes.length > 0 &&
-            notesState.notes.map(note => {
-              return <NoteCardMolecule key={note.id} data={note} />
-            })}
+        <div className={`${globals['full-width']} ${globals.flex} ${globals['center-items']}`}>
+          <div className={`${styles.grid} ${globals['full-width']}`}>
+            {notesState.notes &&
+              notesState.notes.length > 0 &&
+              notesState.notes.map(note => {
+                return <NoteCardMolecule key={note.id} data={note} />
+              })}
+          </div>
         </div>
       </div>
 
-      <div className={`${styles.empty} ${globals.flex} ${globals['center-items']}`}>
-        <EmptyViewMolecule
-          icon={<LightbulbOutlinedIcon sx={{ width: '128px', height: '128px' }} />}
-          text='Notes you add appear here'
-        />
-      </div>
+      {notesState.notes && notesState.notes.length === 0 ? (
+        <div className={`${styles.empty} ${globals.flex} ${globals['center-items']}`}>
+          <EmptyViewMolecule
+            icon={<LightbulbOutlinedIcon sx={{ width: '128px', height: '128px' }} />}
+            text='Notes you add appear here'
+          />
+        </div>
+      ) : (
+        ''
+      )}
     </section>
   )
 }

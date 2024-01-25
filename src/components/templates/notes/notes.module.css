@@ -14,9 +14,11 @@
 }
 
 .grid {
-  max-width: 1000px;
+  max-width: 1080px;
   display: grid;
   display: -ms-grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
   gap: 14px;
+  grid-auto-rows: minmax(100px, auto);
+  grid-auto-flow: dense;
 }

@@ -25,8 +25,9 @@ const NoteCardMolecule: React.FC<NoteCardProps> = ({ data }) => {
             text: 'Pin note',
             ariaLabel: 'Pin note',
           }}
+          small
           tooltipPosition='center'
-          icon={<PushPinOutlinedIcon sx={{ width: '24px', height: '24px' }} />}
+          icon={<PushPinOutlinedIcon sx={{ width: '22px', height: '22px' }} />}
         />
       </div>
       <header
@@ -34,61 +35,75 @@ const NoteCardMolecule: React.FC<NoteCardProps> = ({ data }) => {
       >
         <h3 className={styles.title}>{data.title}</h3>
         <p className={styles.description}>{data.description}</p>
-        <div className={`${globals.flex} ${globals['a-center']} ${globals['gap-4']}`}>
-          <IconTooltipMolecule
-            tooltipProps={{
-              text: 'Remind me',
-              ariaLabel: 'Remind me',
-            }}
-            small
-            tooltipPosition='center'
-            icon={<AddAlertOutlinedIcon sx={{ width: '18px', height: '18px' }} />}
-          />
-          <IconTooltipMolecule
-            tooltipProps={{
-              text: 'Collaborators',
-              ariaLabel: 'Collaborators',
-            }}
-            small
-            tooltipPosition='center'
-            icon={<PersonAddAltOutlinedIcon sx={{ width: '18px', height: '18px' }} />}
-          />
-          <IconTooltipMolecule
-            tooltipProps={{
-              text: 'Background options',
-              ariaLabel: 'Background options',
-            }}
-            small
-            tooltipPosition='center'
-            icon={<ColorLensOutlinedIcon sx={{ width: '18px', height: '18px' }} />}
-          />
-          <IconTooltipMolecule
-            tooltipProps={{
-              text: 'Add image',
-              ariaLabel: 'Add image',
-            }}
-            small
-            tooltipPosition='center'
-            icon={<AddPhotoAlternateOutlinedIcon sx={{ width: '18px', height: '18px' }} />}
-          />
-          <IconTooltipMolecule
-            tooltipProps={{
-              text: 'Archive',
-              ariaLabel: 'Archive',
-            }}
-            small
-            tooltipPosition='center'
-            icon={<ArchiveOutlinedIcon sx={{ width: '18px', height: '18px' }} />}
-          />{' '}
-          <IconTooltipMolecule
-            tooltipProps={{
-              text: 'More',
-              ariaLabel: 'More',
-            }}
-            small
-            tooltipPosition='center'
-            icon={<MoreVertOutlinedIcon sx={{ width: '18px', height: '18px' }} />}
-          />
+        <div
+          className={`${globals.flex} ${styles.icons__set} ${globals['a-center']} ${globals['gap-4']}`}
+        >
+          <div>
+            <IconTooltipMolecule
+              tooltipProps={{
+                text: 'Remind me',
+                ariaLabel: 'Remind me',
+              }}
+              small
+              tooltipPosition='center'
+              icon={<AddAlertOutlinedIcon sx={{ width: '18px', height: '18px' }} />}
+            />
+          </div>
+          <div>
+            <IconTooltipMolecule
+              tooltipProps={{
+                text: 'Collaborators',
+                ariaLabel: 'Collaborators',
+              }}
+              small
+              tooltipPosition='center'
+              icon={<PersonAddAltOutlinedIcon sx={{ width: '18px', height: '18px' }} />}
+            />
+          </div>
+          <div>
+            <IconTooltipMolecule
+              tooltipProps={{
+                text: 'Background options',
+                ariaLabel: 'Background options',
+              }}
+              small
+              tooltipPosition='center'
+              icon={<ColorLensOutlinedIcon sx={{ width: '18px', height: '18px' }} />}
+            />
+          </div>
+          <div>
+            <IconTooltipMolecule
+              tooltipProps={{
+                text: 'Add image',
+                ariaLabel: 'Add image',
+              }}
+              small
+              tooltipPosition='center'
+              icon={<AddPhotoAlternateOutlinedIcon sx={{ width: '18px', height: '18px' }} />}
+            />
+          </div>
+          <div>
+            <IconTooltipMolecule
+              tooltipProps={{
+                text: 'Archive',
+                ariaLabel: 'Archive',
+              }}
+              small
+              tooltipPosition='center'
+              icon={<ArchiveOutlinedIcon sx={{ width: '18px', height: '18px' }} />}
+            />
+          </div>
+          <div>
+            <IconTooltipMolecule
+              tooltipProps={{
+                text: 'More',
+                ariaLabel: 'More',
+              }}
+              small
+              tooltipPosition='center'
+              icon={<MoreVertOutlinedIcon sx={{ width: '18px', height: '18px' }} />}
+            />
+          </div>
         </div>
       </header>
     </article>

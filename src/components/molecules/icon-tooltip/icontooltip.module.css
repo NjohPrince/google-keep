@@ -73,3 +73,18 @@
 .icon__element .tooltip.right {
   right: 0 !important;
 }
+
+.icon__element svg {
+  fill: var(--gray-color);
+  transition: fill 0.2s ease-in-out;
+  -webkit-transition: fill 0.2s ease-in-out;
+  -moz-transition: fill 0.2s ease-in-out;
+  -ms-transition: fill 0.2s ease-in-out;
+  -o-transition: fill 0.2s ease-in-out;
+}
+
+.icon__element:hover svg,
+.icon__element:focus-within svg,
+.icon__element:focus svg {
+  fill: var(--dark-color);
+}

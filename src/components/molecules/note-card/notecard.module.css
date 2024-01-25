@@ -2,23 +2,66 @@
   padding: 16px;
   border: 1px solid var(--border-color);
   border-radius: 4px;
+  padding-bottom: 10px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   -ms-border-radius: 4px;
   -o-border-radius: 4px;
   position: relative;
+  height: fit-content;
+}
+
+.note__card svg {
+  fill: var(--gray-color);
 }
 
 .pin {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 10px;
+  right: 8px;
+}
+
+.pin,
+.icons__set {
+  transition:
+    visibility 0.2s ease-in-out,
+    opacity 0.2s ease-in-out;
+  -webkit-transition:
+    visibility 0.2s ease-in-out,
+    opacity 0.2s ease-in-out;
+  -moz-transition:
+    visibility 0.2s ease-in-out,
+    opacity 0.2s ease-in-out;
+  -ms-transition:
+    visibility 0.2s ease-in-out,
+    opacity 0.2s ease-in-out;
+  -o-transition:
+    visibility 0.2s ease-in-out,
+    opacity 0.2s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.note__card:hover .pin,
+.note__card:focus-within .pin,
+.note__card:focus .pin,
+.note__card:hover .icons__set,
+.note__card:focus-within .icons__set,
+.note__card:focus .icons__set {
+  opacity: 1;
+  visibility: visible;
 }
 
 .note__header h3 {
   font-size: 1.8rem;
   font-weight: 500;
   color: var(--dark-color);
+  width: 100%;
+  max-width: 200px;
+}
+
+.icons__set {
+  margin-left: -4px;
 }
 
 .note__header p {

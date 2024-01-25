@@ -113,8 +113,8 @@ const EditorMolecule: React.FC<EditorProps> = ({
           />{' '}
           <IconTooltipMolecule
             tooltipProps={{
-              text: 'Redo',
-              ariaLabel: 'Redo',
+              text: 'More',
+              ariaLabel: 'More',
             }}
             small
             tooltipPosition='center'

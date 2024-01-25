@@ -12,3 +12,11 @@
 .top {
   gap: 24px;
 }
+
+.grid {
+  max-width: 1000px;
+  display: grid;
+  display: -ms-grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 14px;
+}

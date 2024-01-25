@@ -9,6 +9,12 @@
   position: relative;
 }
 
+.pin {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 .note__header h3 {
   font-size: 1.8rem;
   font-weight: 500;

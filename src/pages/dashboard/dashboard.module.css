@@ -1,0 +1,14 @@
+.sidebar__wrapper {
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: var(--white-color);
+}
+
+.content {
+  padding: 0 24px;
+  padding-top: 72px;
+  padding-left: calc(280px + 24px);
+  width: 100%;
+  min-height: 100vh;
+}

@@ -1,0 +1,12 @@
+.empty__view {
+  height: 100%;
+}
+
+.empty__view span svg {
+  fill: var(--light-gray-color) !important;
+}
+
+.empty__view h2 {
+  font-size: 2.2rem;
+  color: var(--gray-color);
+}

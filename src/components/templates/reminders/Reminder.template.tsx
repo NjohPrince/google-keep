@@ -2,9 +2,9 @@ import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined
 
 import styles from './reminders.module.css'
 
-import EmptyViewMolecule from '../../components/molecules/empty-view/EmptyView.molecule'
+import EmptyViewMolecule from '../../molecules/empty-view/EmptyView.molecule'
 
-const ReminderPage = () => {
+const ReminderTemplate = () => {
   return (
     <section
       style={{
@@ -20,4 +20,4 @@ const ReminderPage = () => {
   )
 }
 
-export default ReminderPage
+export default ReminderTemplate

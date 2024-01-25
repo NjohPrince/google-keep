@@ -2,9 +2,9 @@ import { ArchiveOutlined } from '@mui/icons-material'
 
 import styles from './archive.module.css'
 
-import EmptyViewMolecule from '../../components/molecules/empty-view/EmptyView.molecule'
+import EmptyViewMolecule from '../../molecules/empty-view/EmptyView.molecule'
 
-const ArchivePage = () => {
+const ArchiveTemplate = () => {
   return (
     <section
       style={{
@@ -20,4 +20,4 @@ const ArchivePage = () => {
   )
 }
 
-export default ArchivePage
+export default ArchiveTemplate

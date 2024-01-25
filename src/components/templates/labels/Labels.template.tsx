@@ -2,9 +2,9 @@ import LabelOutlinedIcon from '@mui/icons-material/LabelOutlined'
 
 import styles from './labels.module.css'
 
-import EmptyViewMolecule from '../../components/molecules/empty-view/EmptyView.molecule'
+import EmptyViewMolecule from '../../molecules/empty-view/EmptyView.molecule'
 
-const LabelsPage = () => {
+const LabelsTemplate = () => {
   return (
     <section
       style={{
@@ -20,4 +20,4 @@ const LabelsPage = () => {
   )
 }
 
-export default LabelsPage
+export default LabelsTemplate

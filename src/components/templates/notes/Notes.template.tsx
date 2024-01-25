@@ -2,9 +2,9 @@ import LightbulbOutlinedIcon from '@mui/icons-material/LightbulbOutlined'
 
 import styles from './notes.module.css'
 
-import EmptyViewMolecule from '../../components/molecules/empty-view/EmptyView.molecule'
+import EmptyViewMolecule from '../../molecules/empty-view/EmptyView.molecule'
 
-const NotesPage = () => {
+const NotesTemplate = () => {
   return (
     <section
       style={{
@@ -20,4 +20,4 @@ const NotesPage = () => {
   )
 }
 
-export default NotesPage
+export default NotesTemplate

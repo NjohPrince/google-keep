@@ -2,9 +2,9 @@ import { DeleteOutline } from '@mui/icons-material'
 
 import styles from './trash.module.css'
 
-import EmptyViewMolecule from '../../components/molecules/empty-view/EmptyView.molecule'
+import EmptyViewMolecule from '../../molecules/empty-view/EmptyView.molecule'
 
-const TrashPage = () => {
+const TrashTemplate = () => {
   return (
     <section
       style={{
@@ -21,4 +21,4 @@ const TrashPage = () => {
   )
 }
 
-export default TrashPage
+export default TrashTemplate

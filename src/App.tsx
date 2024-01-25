@@ -1,13 +1,14 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import NavbarOrganisms from './components/organisms/navbar/Navbar.organisms'
 
 import DashboardPage from './pages/dashboard/Dashboard.page'
-import NotesPage from './pages/notes/Notes.page'
-import TrashPage from './pages/trash/Trash.page'
-import ArchivePage from './pages/archives/Archive.page'
-import ReminderPage from './pages/reminders/Reminder.page'
-import LabelsPage from './pages/labels/Labels.page'
+
+import NotesTemplate from './components/templates/notes/Notes.template'
+import ReminderTemplate from './components/templates/reminders/Reminder.template'
+import LabelsTemplate from './components/templates/labels/Labels.template'
+import ArchiveTemplate from './components/templates/archives/Archive.template'
+import TrashTemplate from './components/templates/trash/Trash.template'
 
 const App = () => {
   return (
@@ -16,11 +17,11 @@ const App = () => {
         <NavbarOrganisms />
         <Routes>
           <Route path='/' element={<DashboardPage />}>
-            <Route index element={<NotesPage />} />
-            <Route path='reminders' element={<ReminderPage />} />
-            <Route path='edit-labels' element={<LabelsPage />} />
-            <Route path='archive' element={<ArchivePage />} />
-            <Route path='trash' element={<TrashPage />} />
+            <Route index element={<NotesTemplate />} />
+            <Route path='reminders' element={<ReminderTemplate />} />
+            <Route path='edit-labels' element={<LabelsTemplate />} />
+            <Route path='archive' element={<ArchiveTemplate />} />
+            <Route path='trash' element={<TrashTemplate />} />
           </Route>
         </Routes>
       </BrowserRouter>

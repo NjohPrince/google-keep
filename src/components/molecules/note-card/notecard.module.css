@@ -2,13 +2,15 @@
   padding: 16px;
   border: 1px solid var(--border-color);
   border-radius: 4px;
-  padding-bottom: 10px;
+  padding-bottom: 52px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   -ms-border-radius: 4px;
   -o-border-radius: 4px;
   position: relative;
-  height: fit-content;
+  display: block;
+  height: 100%;
+  background: var(--white-color);
 }
 
 .note__card svg {
@@ -61,7 +63,9 @@
 }
 
 .icons__set {
-  margin-left: -4px;
+  position: absolute;
+  bottom: 4px;
+  left: 10px;
 }
 
 .note__header p {

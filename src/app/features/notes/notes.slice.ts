@@ -48,22 +48,22 @@ const notesSlice = createSlice({
 
       if (operation === 'archive' && noteIndexInNotes !== -1) {
         // archive a note from notes to archivedNotes
-        const note = state.notes[noteIndexInNotes]
-        state = {
-          ...state,
-          notes: state.notes.filter((_, index) => index !== noteIndexInNotes),
-          archivedNotes: [...state.archivedNotes, note],
-        }
+        const note = { ...state.notes[noteIndexInNotes], archived: true }
+        const notes = state.notes.filter((_, index) => index !== noteIndexInNotes)
+        const archivedNotes = [...state.archivedNotes, note]
+
+        state.notes = notes
+        state.archivedNotes = archivedNotes
       } else if (operation === 'restore' && noteIndexInArchivedNotes !== -1) {
         // restore a note from archivedNotes to notes
-        const note = state.archivedNotes[noteIndexInArchivedNotes]
-        state = {
-          ...state,
-          archivedNotes: state.archivedNotes.filter(
-            (_, index) => index !== noteIndexInArchivedNotes,
-          ),
-          notes: [...state.notes, note],
-        }
+        const note = { ...state.archivedNotes[noteIndexInArchivedNotes], archived: false }
+        const archivedNotes = state.archivedNotes.filter(
+          (_, index) => index !== noteIndexInArchivedNotes,
+        )
+        const notes = [...state.notes, note]
+
+        state.archivedNotes = archivedNotes
+        state.notes = notes
       }
     },
     softDeleteOrRestoreNote: (
@@ -79,19 +79,22 @@ const notesSlice = createSlice({
       if (operation === 'softDelete' && noteIndexInNotes !== -1) {
         // soft delete a note from notes to deletedNotes
         const note = state.notes[noteIndexInNotes]
-        state = {
-          ...state,
-          notes: state.notes.filter((_, index) => index !== noteIndexInNotes),
-          deletedNotes: [...state.deletedNotes, note],
-        }
+        const notes = state.notes.filter((_, index) => index !== noteIndexInNotes)
+        const deletedNotes = [...state.deletedNotes, note]
+
+        state.notes = notes
+        state.deletedNotes = deletedNotes
       } else if (operation === 'restore' && noteIndexInDeletedNotes !== -1) {
         // restore a note from deletedNotes to notes
         const note = state.deletedNotes[noteIndexInDeletedNotes]
-        state = {
-          ...state,
-          deletedNotes: state.deletedNotes.filter((_, index) => index !== noteIndexInDeletedNotes),
-          notes: [...state.notes, note],
-        }
+
+        const deletedNotes = state.deletedNotes.filter(
+          (_, index) => index !== noteIndexInDeletedNotes,
+        )
+        const notes = [...state.notes, note]
+
+        state.deletedNotes = deletedNotes
+        state.notes = notes
       }
     },
   },

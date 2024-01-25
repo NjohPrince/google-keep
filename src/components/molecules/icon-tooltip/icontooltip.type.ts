@@ -7,4 +7,5 @@ export type IconTooltipProps = {
   onKeyDown?: (event?: React.KeyboardEvent) => void
   darker?: boolean
   small?: boolean
+  operation?: () => void
 }

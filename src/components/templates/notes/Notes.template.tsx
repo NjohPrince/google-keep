@@ -3,10 +3,10 @@ import LightbulbOutlinedIcon from '@mui/icons-material/LightbulbOutlined'
 import globals from '../../../lib/global/globals.module.css'
 import styles from './notes.module.css'
 
-import EmptyViewMolecule from '../../molecules/empty-view/EmptyView.molecule'
-import ManageNoteOrganism from '../../organisms/manage-note/ManageNote.organism'
 import { useAppSelector } from '../../../lib/hooks/redux-hooks'
+import EmptyViewMolecule from '../../molecules/empty-view/EmptyView.molecule'
 import NoteCardMolecule from '../../molecules/note-card/NoteCard.molecule'
+import ManageNoteOrganism from '../../organisms/manage-note/ManageNote.organism'
 
 const NotesTemplate = () => {
   const notesState = useAppSelector(state => state.notesSlice)

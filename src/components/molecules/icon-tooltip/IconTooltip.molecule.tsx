@@ -13,12 +13,14 @@ const IconTooltipMolecule: React.FC<IconTooltipProps> = ({
   onKeyDown,
   darker,
   small,
+  operation,
 }) => {
   return (
     <div
       role='button'
       tabIndex={0}
       onKeyDown={onKeyDown}
+      onClick={operation}
       className={`${styles.icon__element} ${small ? styles.small : ''} ${darker ? styles.dark : ''} ${globals.flex} ${globals['center-items']}`}
     >
       {icon}

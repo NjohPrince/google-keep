@@ -54,6 +54,7 @@ const ManageNoteOrganism = () => {
 
   useEffect(() => {
     if (!editorActive && JSON.stringify(note) !== JSON.stringify(initialJSON)) {
+      setNote(initialJSON)
       dispatch(createNewNote({ note }))
     }
 

@@ -6,17 +6,24 @@ import ColorLensOutlinedIcon from '@mui/icons-material/ColorLensOutlined'
 import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternateOutlined'
 import ArchiveOutlinedIcon from '@mui/icons-material/ArchiveOutlined'
 import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined'
+import UnarchiveOutlinedIcon from '@mui/icons-material/UnarchiveOutlined'
 
 import globals from '../../../lib/global/globals.module.css'
 import styles from './notecard.module.css'
 
 import { NoteCardProps } from './notecard.type'
 import IconTooltipMolecule from '../icon-tooltip/IconTooltip.molecule'
+import { useAppDispatch } from '../../../lib/hooks/redux-hooks'
+import { archiveOrRestoreNote } from '../../../app/features/notes/notes.slice'
 
 const NoteCardMolecule: React.FC<NoteCardProps> = ({ data }) => {
+  const dispatch = useAppDispatch()
+
   return (
-    <article
+    <div
       aria-label={data.title}
+      role='button'
+      tabIndex={0}
       className={`${styles.note__card} ${globals.flex} ${globals['flex-column']} ${globals['gap-16']} ${globals['full-width']}`}
     >
       <div className={`${styles.pin}`}>
@@ -85,12 +92,26 @@ const NoteCardMolecule: React.FC<NoteCardProps> = ({ data }) => {
           <div>
             <IconTooltipMolecule
               tooltipProps={{
-                text: 'Archive',
-                ariaLabel: 'Archive',
+                text: data.archived ? 'Unarchive' : 'Archive',
+                ariaLabel: data.archived ? 'Unarchive' : 'Archive',
+              }}
+              operation={() => {
+                dispatch(
+                  archiveOrRestoreNote({
+                    id: data.id,
+                    operation: data.archived ? 'restore' : 'archive',
+                  }),
+                )
               }}
               small
               tooltipPosition='center'
-              icon={<ArchiveOutlinedIcon sx={{ width: '18px', height: '18px' }} />}
+              icon={
+                data.archived ? (
+                  <UnarchiveOutlinedIcon sx={{ width: '18px', height: '18px' }} />
+                ) : (
+                  <ArchiveOutlinedIcon sx={{ width: '18px', height: '18px' }} />
+                )
+              }
             />
           </div>
           <div>
@@ -106,7 +127,7 @@ const NoteCardMolecule: React.FC<NoteCardProps> = ({ data }) => {
           </div>
         </div>
       </header>
-    </article>
+    </div>
   )
 }
 

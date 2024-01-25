@@ -17,7 +17,7 @@ const LabelsTemplate = () => {
         className={`${styles.top} ${globals['full-width']} ${globals.flex} ${globals['center-items']}`}
       ></div>
 
-      <div className={`${styles.empty}`}>
+      <div className={`${styles.empty} ${globals.flex} ${globals['center-items']}`}>
         <EmptyViewMolecule
           icon={<LabelOutlinedIcon sx={{ width: '128px', height: '128px' }} />}
           text='Your notes labels will appear here'

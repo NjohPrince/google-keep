@@ -19,7 +19,7 @@ const TrashTemplate = () => {
         <span className={`${styles.trash__text}`}>Notes in Trash are deleted after 7 days.</span>
       </div>
 
-      <div className={`${styles.empty}`}>
+      <div className={`${styles.empty} ${globals.flex} ${globals['center-items']}`}>
         <EmptyViewMolecule
           icon={<DeleteOutline sx={{ width: '128px', height: '128px' }} />}
           text='No notes in Trash'

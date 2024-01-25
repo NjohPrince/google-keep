@@ -1,5 +1,6 @@
 .reminder {
   min-height: calc(100vh - 84px);
+  padding-top: 16px;
 }
 
 .reminder .empty {

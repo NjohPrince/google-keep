@@ -6,6 +6,7 @@ import styles from './searchinput.module.css'
 
 import InputAtom from '../../atoms/input/Input.atom'
 import { SearchInputProps } from './searchinput.type'
+import IconTooltipMolecule from '../icon-tooltip/IconTooltip.molecule'
 
 const SearchInputMolecule: React.FC<SearchInputProps> = ({ inputProps }) => {
   const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
@@ -23,7 +24,15 @@ const SearchInputMolecule: React.FC<SearchInputProps> = ({ inputProps }) => {
       onSubmit={handleSearch}
     >
       <div className={`${styles.icon}`}>
-        <SearchOutlinedIcon />
+        <IconTooltipMolecule
+          tooltipProps={{
+            text: 'Search',
+            ariaLabel: 'Search',
+          }}
+          darker
+          tooltipPosition='center'
+          icon={<SearchOutlinedIcon />}
+        />
       </div>
       <InputAtom {...inputProps} />
     </form>

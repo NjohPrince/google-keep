@@ -12,10 +12,14 @@ const ArchiveTemplate = () => {
       }}
       className={`${styles.archive}`}
     >
-      <EmptyViewMolecule
-        icon={<ArchiveOutlined sx={{ width: '128px', height: '128px' }} />}
-        text='Your archived notes appear here'
-      />
+      <div className={`${styles.top}`}></div>
+
+      <div className={`${styles.empty}`}>
+        <EmptyViewMolecule
+          icon={<ArchiveOutlined sx={{ width: '128px', height: '128px' }} />}
+          text='Your archived notes appear here'
+        />
+      </div>
     </section>
   )
 }

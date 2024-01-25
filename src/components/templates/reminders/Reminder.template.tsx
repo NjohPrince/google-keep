@@ -12,10 +12,14 @@ const ReminderTemplate = () => {
       }}
       className={styles.reminder}
     >
-      <EmptyViewMolecule
-        icon={<NotificationsOutlinedIcon sx={{ width: '128px', height: '128px' }} />}
-        text='Notes with upcoming reminders appear here'
-      />
+      <div className={`${styles.top}`}></div>
+
+      <div className={`${styles.empty}`}>
+        <EmptyViewMolecule
+          icon={<NotificationsOutlinedIcon sx={{ width: '128px', height: '128px' }} />}
+          text='Notes with upcoming reminders appear here'
+        />
+      </div>
     </section>
   )
 }

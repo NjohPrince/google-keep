@@ -5,4 +5,5 @@ export type IconTooltipProps = {
   tooltipProps: TooltipProps
   tooltipPosition?: 'left' | 'right' | 'center'
   onKeyDown?: (event?: React.KeyboardEvent) => void
+  darker?: boolean
 }

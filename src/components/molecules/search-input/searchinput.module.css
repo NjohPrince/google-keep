@@ -6,8 +6,8 @@
 
 .search__input .icon {
   position: absolute;
-  left: 16px;
-  top: 54%;
+  left: 5px;
+  top: 50.5%;
   transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);

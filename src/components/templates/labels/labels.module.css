@@ -1,0 +1,9 @@
+.labels {
+  min-height: calc(100vh - 84px);
+}
+
+.labels .empty {
+  flex: 1;
+  -ms-flex: 1;
+  height: 100%;
+}

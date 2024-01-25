@@ -1,6 +1,5 @@
 import { Outlet } from 'react-router-dom'
 
-import globals from '../../lib/global/globals.module.css'
 import styles from './dashboard.module.css'
 
 import SidebarOrganism from '../../components/organisms/sidebar/Sidebar.organism'
@@ -11,9 +10,7 @@ const DashboardPage = () => {
       <div className={`${styles.sidebar__wrapper}`}>
         <SidebarOrganism />
       </div>
-      <div
-        className={`${styles.content} ${globals.flex} ${globals['flex-column']} ${globals['a-center']}`}
-      >
+      <div className={`${styles.content}`}>
         <Outlet />
       </div>
     </div>

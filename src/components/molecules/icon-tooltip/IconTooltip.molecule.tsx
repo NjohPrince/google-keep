@@ -11,13 +11,14 @@ const IconTooltipMolecule: React.FC<IconTooltipProps> = ({
   tooltipProps,
   tooltipPosition,
   onKeyDown,
+  darker,
 }) => {
   return (
     <div
       role='button'
       tabIndex={0}
       onKeyDown={onKeyDown}
-      className={`${styles.icon__element} ${globals.flex} ${globals['center-items']}`}
+      className={`${styles.icon__element} ${darker ? styles.dark : ''} ${globals.flex} ${globals['center-items']}`}
     >
       {icon}
       <div

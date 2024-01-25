@@ -24,6 +24,7 @@ const initialJSON = {
   checkBoxes: [],
   hasCheckBoxes: false,
   archived: false,
+  image: '',
 }
 
 const ManageNoteOrganism = () => {
@@ -42,6 +43,7 @@ const ManageNoteOrganism = () => {
     checkBoxes: [],
     hasCheckBoxes: false,
     archived: false,
+    image: '',
   })
 
   const ref = useRef<HTMLDivElement | null>(null)

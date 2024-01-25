@@ -12,7 +12,7 @@ import React from 'react'
 import globals from '../../../lib/global/globals.module.css'
 import styles from './notecard.module.css'
 
-import { archiveOrRestoreNote } from '../../../app/features/notes/notes.slice'
+import { addImage, archiveOrRestoreNote } from '../../../app/features/notes/notes.slice'
 import { useAppDispatch } from '../../../lib/hooks/redux-hooks'
 import ColorPalleteAtom from '../../atoms/color-pallete/ColorPallete.atom'
 import IconTooltipMolecule from '../icon-tooltip/IconTooltip.molecule'
@@ -21,12 +21,29 @@ import { NoteCardProps } from './notecard.type'
 const NoteCardMolecule: React.FC<NoteCardProps> = ({ data }) => {
   const dispatch = useAppDispatch()
 
+  const handleNoteImageUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const image = e.target.files?.[0]
+    if (image) {
+      const reader = new FileReader()
+
+      reader.onload = e => {
+        const imageBlob = new Blob([e.target?.result || ''], { type: image.type })
+
+        const imageUrl = URL.createObjectURL(imageBlob)
+        dispatch(addImage({ id: data.id, image: imageUrl }))
+      }
+
+      reader.readAsArrayBuffer(image)
+    }
+  }
+
   return (
     <div
       aria-label={data.title}
       role='button'
       style={{
         background: data.backgroundColor,
+        paddingBottom: data.title.length === 0 && data.description.length === 0 ? '16px' : '52px',
       }}
       tabIndex={0}
       className={`${styles.note__card} ${globals.flex} ${globals['flex-column']} ${globals['gap-16']} ${globals['full-width']}`}
@@ -56,11 +73,25 @@ const NoteCardMolecule: React.FC<NoteCardProps> = ({ data }) => {
       <header
         className={`${styles.note__header} ${globals.flex} ${globals['flex-column']} ${globals['gap-16']} ${globals['full-width']}`}
       >
-        <h3 className={styles.title}>{data.title}</h3>
+        {data.hasImage && data.image ? (
+          <div className={`${styles.image}`}>
+            <img width='100%' height='100%' src={data.image} alt={data.title} />
+          </div>
+        ) : (
+          ''
+        )}
+        <h3
+          style={{
+            marginTop: data.hasImage ? '-6px' : '0px',
+          }}
+          className={styles.title}
+        >
+          {data.title}
+        </h3>
         <p className={styles.description}>{data.description}</p>
 
         <div
-          className={`${globals.flex} ${styles.icons__set} ${globals['a-center']} ${globals['gap-4']}`}
+          className={`${globals.flex} ${styles.icons__set} ${globals['center-items']} ${globals['gap-4']}`}
         >
           <div>
             <IconTooltipMolecule
@@ -98,7 +129,7 @@ const NoteCardMolecule: React.FC<NoteCardProps> = ({ data }) => {
               <ColorPalleteAtom id={data.id} />
             </div>
           </div>
-          <div>
+          <div className={styles.upload}>
             <IconTooltipMolecule
               tooltipProps={{
                 text: 'Add image',
@@ -107,6 +138,14 @@ const NoteCardMolecule: React.FC<NoteCardProps> = ({ data }) => {
               small
               tooltipPosition='center'
               icon={<AddPhotoAlternateOutlinedIcon sx={{ width: '18px', height: '18px' }} />}
+            />
+            <input
+              onChange={handleNoteImageUpdate}
+              role='button'
+              tabIndex={0}
+              type='file'
+              title=''
+              className={styles.file__input}
             />
           </div>
           <div>

@@ -1,12 +1,12 @@
 .note__card {
   padding: 16px;
   border: 1px solid var(--border-color);
-  border-radius: 4px;
+  border-radius: 10px;
   padding-bottom: 52px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -ms-border-radius: 4px;
-  -o-border-radius: 4px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
   position: relative;
   display: block;
   height: 100%;
@@ -19,6 +19,28 @@
   box-shadow: transparent 0px 8px 24px;
   -webkit-box-shadow: tranparent 0px 8px 24px;
   outline: none;
+}
+
+.image {
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  width: 100%;
+  height: auto;
+}
+
+.image img {
+  object-fit: cover;
+  -o-object-fit: cover;
+  object-position: center;
+  -o-object-position: center;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 
 .note__card:hover,
@@ -95,8 +117,31 @@
 
 .icons__set {
   position: absolute;
-  bottom: 4px;
-  left: 10px;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  background: var(--white-color);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.upload {
+  position: relative;
+  width: fit-content;
+  overflow: hidden;
+  overflow: -moz-hidden-unscrollable;
+  cursor: pointer;
+}
+
+.upload input {
+  position: absolute;
+  isolation: isolate;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
 }
 
 .note__header p {

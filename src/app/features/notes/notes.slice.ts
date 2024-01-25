@@ -36,14 +36,23 @@ const notesSlice = createSlice({
         state.deletedNotes.splice(index, 1)
       }
     },
+    addImage: (state, action: PayloadAction<{ id: number; image: string }>) => {
+      const { id, image } = action.payload
+      const note = state.notes.find(note => note.id === id)
+
+      if (note) {
+        note.hasImage = true
+        note.image = image
+
+        const index = state.notes.indexOf(note)
+        state.notes[index] = note
+      }
+    },
     editColor: (state, action: PayloadAction<{ id: number; color: string }>) => {
       const { id, color } = action.payload
       const note = state.notes.find(note => note.id === id)
 
       if (note) {
-        console.log('====================================')
-        console.log({ note, color })
-        console.log('====================================')
         note.backgroundColor = color
 
         const index = state.notes.indexOf(note)
@@ -124,5 +133,6 @@ export const {
   deleteNote,
   softDeleteOrRestoreNote,
   editColor,
+  addImage,
 } = notesSlice.actions
 export default notesSlice.reducer

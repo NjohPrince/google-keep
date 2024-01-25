@@ -9,4 +9,5 @@ export type NoteType = {
   checkBoxes: string[]
   hasCheckBoxes: boolean
   archived: boolean
+  image?: string
 }

@@ -34,7 +34,7 @@ const NoteCardMolecule: React.FC<NoteCardProps> = ({ data }) => {
       >
         <h3 className={styles.title}>{data.title}</h3>
         <p className={styles.description}>{data.description}</p>
-        <div className={`${globals.flex} ${globals['a-center']} ${globals['gap-12']}`}>
+        <div className={`${globals.flex} ${globals['a-center']} ${globals['gap-4']}`}>
           <IconTooltipMolecule
             tooltipProps={{
               text: 'Remind me',

@@ -1,7 +1,7 @@
 import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternateOutlined'
 import BrushOutlinedIcon from '@mui/icons-material/BrushOutlined'
 import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined'
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useRef, useState, useEffect } from 'react'
 
 import globals from '../../../lib/global/globals.module.css'
 import styles from './managenote.module.css'
@@ -9,9 +9,38 @@ import styles from './managenote.module.css'
 import IconTooltipMolecule from '../../molecules/icon-tooltip/IconTooltip.molecule'
 import EditorMolecule from '../../molecules/editor/Editor.molecule'
 import UseOnClickOutside from '../../../lib/hooks/detect-click-outside'
+import { createNewNote } from '../../../app/features/notes/notes.slice'
+import { NoteType } from '../../../types/models/note.model'
+import { useAppDispatch } from '../../../lib/hooks/redux-hooks'
+
+const initialJSON = {
+  id: 0,
+  hasImage: false,
+  title: '',
+  description: '',
+  hasDrawing: false,
+  label: '',
+  backgroundColor: '',
+  checkBoxes: [],
+  hasCheckBoxes: false,
+  archived: false,
+}
 
 const ManageNoteOrganism = () => {
   const [editorActive, setEditorActive] = useState(false)
+  const dispatch = useAppDispatch()
+  const [note, setNote] = useState<NoteType>({
+    id: 0,
+    hasImage: false,
+    title: '',
+    description: '',
+    hasDrawing: false,
+    label: '',
+    backgroundColor: '',
+    checkBoxes: [],
+    hasCheckBoxes: false,
+    archived: false,
+  })
 
   const ref = useRef<HTMLDivElement | null>(null)
 
@@ -23,10 +52,23 @@ const ManageNoteOrganism = () => {
 
   UseOnClickOutside(ref, outsideClickHandler)
 
+  useEffect(() => {
+    if (!editorActive && JSON.stringify(note) !== JSON.stringify(initialJSON)) {
+      dispatch(createNewNote({ note }))
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [editorActive])
+
   return (
     <div ref={ref} className={`${styles.manage__notes} ${globals['full-width']}`}>
       {editorActive ? (
-        <EditorMolecule setEditorActive={setEditorActive} editorActive={editorActive} />
+        <EditorMolecule
+          setNote={setNote}
+          note={note}
+          setEditorActive={setEditorActive}
+          editorActive={editorActive}
+        />
       ) : (
         <div
           id='collapsibleContent'

@@ -1,5 +1,5 @@
 import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import AddAlertOutlinedIcon from '@mui/icons-material/AddAlertOutlined'
 import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined'
 import ColorLensOutlinedIcon from '@mui/icons-material/ColorLensOutlined'
@@ -14,51 +14,20 @@ import styles from './editor.module.css'
 
 import IconTooltipMolecule from '../icon-tooltip/IconTooltip.molecule'
 import { EditorProps } from './editor.type'
-import { NoteType } from '../../../types/models/note.model'
-import { useAppDispatch } from '../../../lib/hooks/redux-hooks'
-import { createNewNote } from '../../../app/features/notes/notes.slice'
 
-const initialJSON = {
-  id: 0,
-  hasImage: false,
-  title: '',
-  description: '',
-  hasDrawing: false,
-  label: '',
-  backgroundColor: '',
-  checkBoxes: [],
-  hasCheckBoxes: false,
-  archived: false,
-}
-
-const EditorMolecule: React.FC<EditorProps> = ({ setEditorActive, editorActive }) => {
+const EditorMolecule: React.FC<EditorProps> = ({
+  setEditorActive,
+  editorActive,
+  setNote,
+  note,
+}) => {
   const inputRef = useRef<HTMLInputElement | null>(null)
-  const dispatch = useAppDispatch()
-
-  const [note, setNote] = useState<NoteType>({
-    id: 0,
-    hasImage: false,
-    title: '',
-    description: '',
-    hasDrawing: false,
-    label: '',
-    backgroundColor: '',
-    checkBoxes: [],
-    hasCheckBoxes: false,
-    archived: false,
-  })
 
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus()
     }
   }, [])
-
-  useEffect(() => {
-    if (!editorActive && JSON.stringify(note) !== JSON.stringify(initialJSON)) {
-      dispatch(createNewNote({ note }))
-    }
-  }, [editorActive])
 
   return (
     <div

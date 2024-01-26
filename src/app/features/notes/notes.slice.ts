@@ -44,10 +44,6 @@ const notesSlice = createSlice({
     addImage: (state, action: PayloadAction<{ id: number; image: string }>) => {
       const { id, image } = action.payload
 
-      console.log('====================================')
-      console.log({ id })
-      console.log('====================================')
-
       const note = state.notes.find(note => note.id === id)
 
       if (note) {

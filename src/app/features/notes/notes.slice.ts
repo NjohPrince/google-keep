@@ -24,9 +24,14 @@ const notesSlice = createSlice({
       state.deletedNotes = []
     },
     createNewNote: (state, action: PayloadAction<{ note: NoteType }>) => {
-      const notes = state.notes
+      const notes = action.payload.note.archived === true ? state.archivedNotes : state.notes
       notes.push(action.payload.note)
-      state.notes = notes
+
+      if (action.payload.note.archived === true) {
+        state.archivedNotes = notes
+      } else {
+        state.notes = notes
+      }
     },
     deleteNote: (state, action: PayloadAction<{ id: number }>) => {
       const { id } = action.payload

@@ -4,11 +4,12 @@ import ArchiveOutlinedIcon from '@mui/icons-material/ArchiveOutlined'
 import ColorLensOutlinedIcon from '@mui/icons-material/ColorLensOutlined'
 import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined'
 import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined'
+import PushPinIcon from '@mui/icons-material/PushPin'
 import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined'
 import RedoOutlinedIcon from '@mui/icons-material/RedoOutlined'
 import UndoOutlinedIcon from '@mui/icons-material/UndoOutlined'
 import React, { useEffect, useRef } from 'react'
-import PushPinIcon from '@mui/icons-material/PushPin'
+import UnarchiveOutlinedIcon from '@mui/icons-material/UnarchiveOutlined'
 
 import globals from '../../../lib/global/globals.module.css'
 import styles from './editor.module.css'
@@ -166,12 +167,24 @@ const EditorMolecule: React.FC<EditorProps> = ({
           />
           <IconTooltipMolecule
             tooltipProps={{
-              text: 'Archive',
-              ariaLabel: 'Archive',
+              text: note.archived ? 'Unarchive' : 'Archive',
+              ariaLabel: note.archived ? 'Unarchive' : 'Archive',
             }}
             small
+            onKeyDown={() => {
+              setNote({ ...note, archived: !note.archived })
+            }}
+            operation={() => {
+              setNote({ ...note, archived: !note.archived })
+            }}
             tooltipPosition='center'
-            icon={<ArchiveOutlinedIcon sx={{ width: '18px', height: '18px' }} />}
+            icon={
+              note.archived ? (
+                <UnarchiveOutlinedIcon sx={{ width: '18px', height: '18px' }} />
+              ) : (
+                <ArchiveOutlinedIcon sx={{ width: '18px', height: '18px' }} />
+              )
+            }
           />{' '}
           <IconTooltipMolecule
             tooltipProps={{

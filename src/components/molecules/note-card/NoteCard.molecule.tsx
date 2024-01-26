@@ -9,6 +9,8 @@ import PushPinIcon from '@mui/icons-material/PushPin'
 import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined'
 import UnarchiveOutlinedIcon from '@mui/icons-material/UnarchiveOutlined'
 import React from 'react'
+import { DeleteOutline } from '@mui/icons-material'
+import RestoreFromTrashIcon from '@mui/icons-material/RestoreFromTrash'
 
 import globals from '../../../lib/global/globals.module.css'
 import styles from './notecard.module.css'
@@ -17,13 +19,14 @@ import {
   addImage,
   archiveOrRestoreNote,
   controlNotePin,
+  softDeleteOrRestoreNote,
 } from '../../../app/features/notes/notes.slice'
 import { useAppDispatch } from '../../../lib/hooks/redux-hooks'
 import ColorPalleteAtom from '../../atoms/color-pallete/ColorPallete.atom'
 import IconTooltipMolecule from '../icon-tooltip/IconTooltip.molecule'
 import { NoteCardProps } from './notecard.type'
 
-const NoteCardMolecule: React.FC<NoteCardProps> = ({ data }) => {
+const NoteCardMolecule: React.FC<NoteCardProps> = ({ data, trash }) => {
   const dispatch = useAppDispatch()
 
   const handleNoteImageUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -106,9 +109,7 @@ const NoteCardMolecule: React.FC<NoteCardProps> = ({ data }) => {
         </h3>
         <p className={styles.description}>{data.description}</p>
 
-        <div
-          className={`${globals.flex} ${styles.icons__set} ${globals['center-items']} ${globals['gap-4']}`}
-        >
+        <div className={`${globals.flex} ${styles.icons__set} ${globals['center-items']}`}>
           <div>
             <IconTooltipMolecule
               tooltipProps={{
@@ -191,6 +192,31 @@ const NoteCardMolecule: React.FC<NoteCardProps> = ({ data }) => {
                   <UnarchiveOutlinedIcon sx={{ width: '18px', height: '18px' }} />
                 ) : (
                   <ArchiveOutlinedIcon sx={{ width: '18px', height: '18px' }} />
+                )
+              }
+            />
+          </div>
+          <div>
+            <IconTooltipMolecule
+              tooltipProps={{
+                text: trash ? 'Restore' : 'Move to trash',
+                ariaLabel: trash ? 'Restore' : 'Move to trash',
+              }}
+              small
+              tooltipPosition='center'
+              operation={() => {
+                dispatch(
+                  softDeleteOrRestoreNote({
+                    id: data.id,
+                    operation: trash ? 'restore' : 'softDelete',
+                  }),
+                )
+              }}
+              icon={
+                trash ? (
+                  <RestoreFromTrashIcon sx={{ width: '18px', height: '18px' }} />
+                ) : (
+                  <DeleteOutline sx={{ width: '18px', height: '18px' }} />
                 )
               }
             />

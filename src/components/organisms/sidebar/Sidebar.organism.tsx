@@ -39,6 +39,7 @@ const SidebarOrganism = () => {
       icon: <DeleteOutline sx={{ width: '24px', height: '24px' }} />,
       text: 'Trash',
       link: '/trash',
+      count: notesState.deletedNotes.length,
     },
   ]
 

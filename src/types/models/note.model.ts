@@ -11,4 +11,5 @@ export type NoteType = {
   archived: boolean
   image?: string
   pinned?: boolean
+  deleted?: boolean
 }

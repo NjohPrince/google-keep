@@ -5,6 +5,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import ColorLensOutlinedIcon from '@mui/icons-material/ColorLensOutlined'
 import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined'
 import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined'
+import PushPinIcon from '@mui/icons-material/PushPin'
 import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined'
 import UnarchiveOutlinedIcon from '@mui/icons-material/UnarchiveOutlined'
 import React from 'react'
@@ -12,7 +13,11 @@ import React from 'react'
 import globals from '../../../lib/global/globals.module.css'
 import styles from './notecard.module.css'
 
-import { addImage, archiveOrRestoreNote } from '../../../app/features/notes/notes.slice'
+import {
+  addImage,
+  archiveOrRestoreNote,
+  controlNotePin,
+} from '../../../app/features/notes/notes.slice'
 import { useAppDispatch } from '../../../lib/hooks/redux-hooks'
 import ColorPalleteAtom from '../../atoms/color-pallete/ColorPallete.atom'
 import IconTooltipMolecule from '../icon-tooltip/IconTooltip.molecule'
@@ -27,6 +32,9 @@ const NoteCardMolecule: React.FC<NoteCardProps> = ({ data }) => {
       const reader = new FileReader()
 
       reader.onload = e => {
+        console.log('====================================')
+        console.log({ data: data.id })
+        console.log('====================================')
         const imageBlob = new Blob([e.target?.result || ''], { type: image.type })
 
         const imageUrl = URL.createObjectURL(imageBlob)
@@ -62,12 +70,20 @@ const NoteCardMolecule: React.FC<NoteCardProps> = ({ data }) => {
       <div className={`${styles.pin}`}>
         <IconTooltipMolecule
           tooltipProps={{
-            text: 'Pin note',
-            ariaLabel: 'Pin note',
+            text: data.pinned ? 'Unpin note' : 'Pin note',
+            ariaLabel: data.pinned ? 'Unpin note' : 'Pin note',
           }}
+          onKeyDown={() => dispatch(controlNotePin({ id: data.id, value: !data.pinned }))}
+          operation={() => dispatch(controlNotePin({ id: data.id, value: !data.pinned }))}
           small
           tooltipPosition='center'
-          icon={<PushPinOutlinedIcon sx={{ width: '22px', height: '22px' }} />}
+          icon={
+            data.pinned ? (
+              <PushPinIcon sx={{ width: '22px', height: '22px' }} />
+            ) : (
+              <PushPinOutlinedIcon sx={{ width: '22px', height: '22px' }} />
+            )
+          }
         />
       </div>
       <header

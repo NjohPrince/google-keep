@@ -38,13 +38,30 @@ const notesSlice = createSlice({
     },
     addImage: (state, action: PayloadAction<{ id: number; image: string }>) => {
       const { id, image } = action.payload
+
+      console.log('====================================')
+      console.log({ id })
+      console.log('====================================')
+
       const note = state.notes.find(note => note.id === id)
 
       if (note) {
+        const index = state.notes.indexOf(note)
+
         note.hasImage = true
         note.image = image
 
+        state.notes[index] = note
+      }
+    },
+    controlNotePin: (state, action: PayloadAction<{ id: number; value: boolean }>) => {
+      const { id, value } = action.payload
+      const note = state.notes.find(note => note.id === id)
+
+      if (note) {
         const index = state.notes.indexOf(note)
+
+        note.pinned = value
         state.notes[index] = note
       }
     },
@@ -53,9 +70,10 @@ const notesSlice = createSlice({
       const note = state.notes.find(note => note.id === id)
 
       if (note) {
+        const index = state.notes.indexOf(note)
+
         note.backgroundColor = color
 
-        const index = state.notes.indexOf(note)
         state.notes[index] = note
       }
     },
@@ -134,5 +152,6 @@ export const {
   softDeleteOrRestoreNote,
   editColor,
   addImage,
+  controlNotePin,
 } = notesSlice.actions
 export default notesSlice.reducer

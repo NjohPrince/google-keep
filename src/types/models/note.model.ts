@@ -10,4 +10,5 @@ export type NoteType = {
   hasCheckBoxes: boolean
   archived: boolean
   image?: string
+  pinned?: boolean
 }

@@ -8,6 +8,7 @@ import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined'
 import RedoOutlinedIcon from '@mui/icons-material/RedoOutlined'
 import UndoOutlinedIcon from '@mui/icons-material/UndoOutlined'
 import React, { useEffect, useRef } from 'react'
+import PushPinIcon from '@mui/icons-material/PushPin'
 
 import globals from '../../../lib/global/globals.module.css'
 import styles from './editor.module.css'
@@ -73,11 +74,22 @@ const EditorMolecule: React.FC<EditorProps> = ({
         <div className={`${globals.flex} ${globals['a-center']} ${globals['gap-8']}`}>
           <IconTooltipMolecule
             tooltipProps={{
-              text: 'Pin note',
-              ariaLabel: 'Pin note',
+              text: note.pinned ? 'Unpin note' : 'Pin note',
+              ariaLabel: note.pinned ? 'Unpin note' : 'Pin note',
             }}
+            onKeyDown={() => {
+              setNote({ ...note, pinned: !note.pinned })
+            }}
+            operation={() => setNote({ ...note, pinned: !note.pinned })}
+            small
             tooltipPosition='center'
-            icon={<PushPinOutlinedIcon sx={{ width: '24px', height: '24px' }} />}
+            icon={
+              note.pinned ? (
+                <PushPinIcon sx={{ width: '22px', height: '22px' }} />
+              ) : (
+                <PushPinOutlinedIcon sx={{ width: '22px', height: '22px' }} />
+              )
+            }
           />
         </div>
       </div>

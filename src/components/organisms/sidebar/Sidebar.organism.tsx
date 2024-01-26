@@ -42,8 +42,12 @@ const SidebarOrganism = () => {
     },
   ]
 
+  const sidebarState = useAppSelector(state => state.sidebarSlice)
+
   return (
-    <aside className={`${styles.sidebar} ${globals['full-width']}`}>
+    <aside
+      className={`${styles.sidebar} ${sidebarState.active ? styles.active : ''} ${globals['full-width']}`}
+    >
       <div role='navigation' className={`${globals.flex} ${globals['flex-column']}`}>
         {sidebarLinks &&
           sidebarLinks.map((link, index) => (

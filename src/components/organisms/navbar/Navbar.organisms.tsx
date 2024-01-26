@@ -14,10 +14,14 @@ import styles from './navbar.module.css'
 import { convertPathToPascalCase } from '../../../lib/utils/convert-path'
 import IconTooltipMolecule from '../../molecules/icon-tooltip/IconTooltip.molecule'
 import SearchInputMolecule from '../../molecules/search-input/SearchInput.molecule'
+import { useAppDispatch, useAppSelector } from '../../../lib/hooks/redux-hooks'
+import { toggleState } from '../../../app/features/sidebar/sidebar.slice'
 
 const NavbarOrganisms = () => {
   const [search, setSearch] = useState('')
   const [viewType, setViewType] = useState<'List' | 'Grid'>('List')
+  const sidebarState = useAppSelector(state => state.sidebarSlice)
+  const dispatch = useAppDispatch()
 
   const location = useLocation()
   const path = location.pathname
@@ -37,6 +41,12 @@ const NavbarOrganisms = () => {
             tooltipProps={{
               text: 'Main Menu',
               ariaLabel: 'Main Menu',
+            }}
+            onKeyDown={() => {
+              dispatch(toggleState({ active: !sidebarState.active }))
+            }}
+            operation={() => {
+              dispatch(toggleState({ active: !sidebarState.active }))
             }}
             tooltipPosition='left'
             icon={<MenuOutlinedIcon sx={{ width: '24px', height: '24px' }} />}

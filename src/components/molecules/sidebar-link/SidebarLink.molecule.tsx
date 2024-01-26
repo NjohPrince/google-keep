@@ -5,9 +5,11 @@ import globals from '../../../lib/global/globals.module.css'
 import styles from './sidebarlink.module.css'
 
 import { SidebarLinkProps } from './sidebarlink.type'
+import { useAppSelector } from '../../../lib/hooks/redux-hooks'
 
 const SidebarLinkMolecule: React.FC<SidebarLinkProps> = ({ icon, text, link, count }) => {
   const location = useLocation()
+  const sidebarState = useAppSelector(state => state.sidebarSlice)
 
   return (
     <div className={`${styles.sidebar__link} ${globals['full-width']}`}>
@@ -17,7 +19,9 @@ const SidebarLinkMolecule: React.FC<SidebarLinkProps> = ({ icon, text, link, cou
         className={`${styles.actual__link} ${location.pathname === link ? styles['active'] : ''} ${globals.flex} ${globals['full-width']} ${globals['a-center']} ${globals['gap-32']}`}
       >
         {icon}
-        <span className={`${globals.flex} ${globals['a-center']} ${globals['gap-4']}`}>
+        <span
+          className={`${globals.flex} ${sidebarState.active ? '' : styles.hidden} ${globals['a-center']} ${globals['gap-4']}`}
+        >
           {text}{' '}
           {count !== undefined ? (
             <span className={`${styles.count} ${globals.flex} ${globals['center-items']}`}>

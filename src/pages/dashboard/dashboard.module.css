@@ -8,7 +8,16 @@
 .content {
   padding: 0 24px;
   padding-top: 84px;
-  padding-left: calc(280px + 24px);
+  padding-left: 48px;
   width: 100%;
   min-height: 100vh;
+  transition: 0.2s ease-in-out;
+  -webkit-transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -ms-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+}
+
+.content.sidebar__active {
+  padding-left: calc(280px + 24px);
 }

@@ -16,6 +16,10 @@ const InputAtom: React.FC<InputProps> = ({
   onChange,
   value,
 }) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    onChange(event)
+  }
+
   return (
     <input
       className={`${styles.input} ${iconLeft ? styles.has__icon : ''}`}
@@ -26,8 +30,9 @@ const InputAtom: React.FC<InputProps> = ({
       aria-label={ariaLabel}
       aria-describedby={ariaDescribedBy}
       autoComplete={autoComplete}
-      onChange={onChange}
+      onChange={handleChange}
       value={value}
+      data-testid='testInput'
     />
   )
 }

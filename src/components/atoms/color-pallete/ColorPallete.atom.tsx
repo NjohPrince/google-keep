@@ -14,7 +14,10 @@ const ColorPalleteAtom: React.FC<ColorPaletteProps> = ({ setNote, note, id }) =>
   const dispatch = useAppDispatch()
 
   return (
-    <div className={`${styles.palette} ${globals.flex} ${globals['a-center']}`}>
+    <div
+      data-testid='colorButton'
+      className={`${styles.palette} ${globals.flex} ${globals['a-center']}`}
+    >
       {colors &&
         colors.length > 0 &&
         colors.map((color, index) => {

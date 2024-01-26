@@ -1,16 +1,17 @@
+import { DeleteOutline } from '@mui/icons-material'
 import AddAlertOutlinedIcon from '@mui/icons-material/AddAlertOutlined'
 import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternateOutlined'
 import ArchiveOutlinedIcon from '@mui/icons-material/ArchiveOutlined'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import ColorLensOutlinedIcon from '@mui/icons-material/ColorLensOutlined'
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
 import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined'
 import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined'
 import PushPinIcon from '@mui/icons-material/PushPin'
 import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined'
+import RestoreFromTrashIcon from '@mui/icons-material/RestoreFromTrash'
 import UnarchiveOutlinedIcon from '@mui/icons-material/UnarchiveOutlined'
 import React from 'react'
-import { DeleteOutline } from '@mui/icons-material'
-import RestoreFromTrashIcon from '@mui/icons-material/RestoreFromTrash'
 
 import globals from '../../../lib/global/globals.module.css'
 import styles from './notecard.module.css'
@@ -19,6 +20,7 @@ import {
   addImage,
   archiveOrRestoreNote,
   controlNotePin,
+  deleteNote,
   softDeleteOrRestoreNote,
 } from '../../../app/features/notes/notes.slice'
 import { useAppDispatch } from '../../../lib/hooks/redux-hooks'
@@ -110,128 +112,168 @@ const NoteCardMolecule: React.FC<NoteCardProps> = ({ data, trash }) => {
         <p className={styles.description}>{data.description}</p>
 
         <div className={`${globals.flex} ${styles.icons__set} ${globals['center-items']}`}>
-          <div>
-            <IconTooltipMolecule
-              tooltipProps={{
-                text: 'Remind me',
-                ariaLabel: 'Remind me',
-              }}
-              small
-              tooltipPosition='center'
-              icon={<AddAlertOutlinedIcon sx={{ width: '18px', height: '18px' }} />}
-            />
-          </div>
-          <div>
-            <IconTooltipMolecule
-              tooltipProps={{
-                text: 'Collaborators',
-                ariaLabel: 'Collaborators',
-              }}
-              small
-              tooltipPosition='center'
-              icon={<PersonAddAltOutlinedIcon sx={{ width: '18px', height: '18px' }} />}
-            />
-          </div>
-          <div className={`${styles.color__options} ${globals.flex} ${globals['center-items']}`}>
-            <IconTooltipMolecule
-              tooltipProps={{
-                text: 'Background options',
-                ariaLabel: 'Background options',
-              }}
-              small
-              tooltipPosition='center'
-              icon={<ColorLensOutlinedIcon sx={{ width: '18px', height: '18px' }} />}
-            />
-            <div className={styles.drop}>
-              <ColorPalleteAtom id={data.id} />
+          <>
+            {trash ? (
+              ''
+            ) : (
+              <>
+                <div>
+                  <IconTooltipMolecule
+                    tooltipProps={{
+                      text: 'Remind me',
+                      ariaLabel: 'Remind me',
+                    }}
+                    small
+                    tooltipPosition='center'
+                    icon={<AddAlertOutlinedIcon sx={{ width: '18px', height: '18px' }} />}
+                  />
+                </div>
+                <div>
+                  <IconTooltipMolecule
+                    tooltipProps={{
+                      text: 'Collaborators',
+                      ariaLabel: 'Collaborators',
+                    }}
+                    small
+                    tooltipPosition='center'
+                    icon={<PersonAddAltOutlinedIcon sx={{ width: '18px', height: '18px' }} />}
+                  />
+                </div>
+                <div
+                  className={`${styles.color__options} ${globals.flex} ${globals['center-items']}`}
+                >
+                  <IconTooltipMolecule
+                    tooltipProps={{
+                      text: 'Background options',
+                      ariaLabel: 'Background options',
+                    }}
+                    small
+                    tooltipPosition='center'
+                    icon={<ColorLensOutlinedIcon sx={{ width: '18px', height: '18px' }} />}
+                  />
+                  <div className={styles.drop}>
+                    <ColorPalleteAtom id={data.id} />
+                  </div>
+                </div>
+                <IconTooltipMolecule
+                  tooltipProps={{
+                    text: 'Add image',
+                    ariaLabel: 'Add image',
+                  }}
+                  onKeyDown={() => {
+                    document.getElementById('fileInput')?.click()
+                  }}
+                  operation={() => {
+                    document.getElementById('fileInput')?.click()
+                  }}
+                  small
+                  tooltipPosition='center'
+                  icon={<AddPhotoAlternateOutlinedIcon sx={{ width: '18px', height: '18px' }} />}
+                />
+                <input
+                  onChange={handleNoteImageUpdate}
+                  role='button'
+                  id='fileInput'
+                  style={{ display: 'none' }}
+                  tabIndex={0}
+                  type='file'
+                  title=''
+                  className={styles.file__input}
+                />
+                <div>
+                  <IconTooltipMolecule
+                    tooltipProps={{
+                      text: data.archived ? 'Unarchive' : 'Archive',
+                      ariaLabel: data.archived ? 'Unarchive' : 'Archive',
+                    }}
+                    operation={() => {
+                      dispatch(
+                        archiveOrRestoreNote({
+                          id: data.id,
+                          operation: data.archived ? 'restore' : 'archive',
+                        }),
+                      )
+                    }}
+                    small
+                    tooltipPosition='center'
+                    icon={
+                      data.archived ? (
+                        <UnarchiveOutlinedIcon sx={{ width: '18px', height: '18px' }} />
+                      ) : (
+                        <ArchiveOutlinedIcon sx={{ width: '18px', height: '18px' }} />
+                      )
+                    }
+                  />
+                </div>
+              </>
+            )}
+          </>
+          {data.archived ? (
+            ''
+          ) : (
+            <div>
+              <IconTooltipMolecule
+                tooltipProps={{
+                  text: trash ? 'Restore' : 'Move to trash',
+                  ariaLabel: trash ? 'Restore' : 'Move to trash',
+                }}
+                small
+                tooltipPosition='center'
+                operation={() => {
+                  dispatch(
+                    softDeleteOrRestoreNote({
+                      id: data.id,
+                      operation: trash ? 'restore' : 'softDelete',
+                    }),
+                  )
+                }}
+                icon={
+                  trash ? (
+                    <RestoreFromTrashIcon sx={{ width: '18px', height: '18px' }} />
+                  ) : (
+                    <DeleteOutline sx={{ width: '18px', height: '18px' }} />
+                  )
+                }
+              />
             </div>
-          </div>
-          <IconTooltipMolecule
-            tooltipProps={{
-              text: 'Add image',
-              ariaLabel: 'Add image',
-            }}
-            onKeyDown={() => {
-              document.getElementById('fileInput')?.click()
-            }}
-            operation={() => {
-              document.getElementById('fileInput')?.click()
-            }}
-            small
-            tooltipPosition='center'
-            icon={<AddPhotoAlternateOutlinedIcon sx={{ width: '18px', height: '18px' }} />}
-          />
-          <input
-            onChange={handleNoteImageUpdate}
-            role='button'
-            id='fileInput'
-            style={{ display: 'none' }}
-            tabIndex={0}
-            type='file'
-            title=''
-            className={styles.file__input}
-          />
-          <div>
-            <IconTooltipMolecule
-              tooltipProps={{
-                text: data.archived ? 'Unarchive' : 'Archive',
-                ariaLabel: data.archived ? 'Unarchive' : 'Archive',
-              }}
-              operation={() => {
-                dispatch(
-                  archiveOrRestoreNote({
-                    id: data.id,
-                    operation: data.archived ? 'restore' : 'archive',
-                  }),
-                )
-              }}
-              small
-              tooltipPosition='center'
-              icon={
-                data.archived ? (
-                  <UnarchiveOutlinedIcon sx={{ width: '18px', height: '18px' }} />
-                ) : (
-                  <ArchiveOutlinedIcon sx={{ width: '18px', height: '18px' }} />
-                )
-              }
-            />
-          </div>
-          <div>
-            <IconTooltipMolecule
-              tooltipProps={{
-                text: trash ? 'Restore' : 'Move to trash',
-                ariaLabel: trash ? 'Restore' : 'Move to trash',
-              }}
-              small
-              tooltipPosition='center'
-              operation={() => {
-                dispatch(
-                  softDeleteOrRestoreNote({
-                    id: data.id,
-                    operation: trash ? 'restore' : 'softDelete',
-                  }),
-                )
-              }}
-              icon={
-                trash ? (
-                  <RestoreFromTrashIcon sx={{ width: '18px', height: '18px' }} />
-                ) : (
-                  <DeleteOutline sx={{ width: '18px', height: '18px' }} />
-                )
-              }
-            />
-          </div>
-          <div>
-            <IconTooltipMolecule
-              tooltipProps={{
-                text: 'More',
-                ariaLabel: 'More',
-              }}
-              small
-              tooltipPosition='center'
-              icon={<MoreVertOutlinedIcon sx={{ width: '18px', height: '18px' }} />}
-            />
-          </div>
+          )}
+          {trash ? (
+            <div>
+              <IconTooltipMolecule
+                tooltipProps={{
+                  text: 'Delete permanently',
+                  ariaLabel: 'Delete permanently',
+                }}
+                operation={() => {
+                  dispatch(
+                    deleteNote({
+                      id: data.id,
+                    }),
+                  )
+                }}
+                small
+                tooltipPosition='center'
+                icon={<DeleteForeverIcon sx={{ width: '18px', height: '18px' }} />}
+              />
+            </div>
+          ) : (
+            ''
+          )}
+          {trash ? (
+            ''
+          ) : (
+            <div>
+              <IconTooltipMolecule
+                tooltipProps={{
+                  text: 'More',
+                  ariaLabel: 'More',
+                }}
+                small
+                tooltipPosition='center'
+                icon={<MoreVertOutlinedIcon sx={{ width: '18px', height: '18px' }} />}
+              />
+            </div>
+          )}
         </div>
       </header>
     </div>
